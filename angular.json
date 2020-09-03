@@ -53,7 +53,9 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/nebulas.js",
+              "src/nebPay.js"
             ],
             "styles": [
               "src/styles.styl"
