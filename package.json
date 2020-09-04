@@ -21,6 +21,8 @@
     "@angular/platform-browser-dynamic": "~10.0.9",
     "@angular/router": "~10.0.9",
     "@ng-bootstrap/ng-bootstrap": "^7.0.0",
+    "angular-feather": "^6.0.10",
+    "angularx-qrcode": "^10.0.10",
     "bignumber.js": "^9.0.0",
     "bootstrap": "^4.5.0",
     "rxjs": "~6.5.5",

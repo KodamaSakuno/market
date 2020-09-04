@@ -62,7 +62,8 @@
             ],
             "scripts": [],
             "allowedCommonJsDependencies": [
-              "bignumber.js"
+              "bignumber.js",
+              "qrcode"
             ]
           },
           "configurations": {

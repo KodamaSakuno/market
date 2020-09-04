@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { WalletService } from '../../services/wallet.service';
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -7,10 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() {
+  isAvailable = false;
+
+  constructor(private walletService: WalletService) {
+    this.walletService.isAvailable.subscribe(isAvailable => {
+      this.isAvailable = isAvailable;
+    });
+    this.walletService.checkBinded();
   }
 
   ngOnInit(): void {
   }
-
 }

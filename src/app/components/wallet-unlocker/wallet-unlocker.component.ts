@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
-import { WalletService } from '../../wallet.service';
+import { WalletService } from '../../services/wallet.service';
 
 @Component({
   selector: 'app-wallet-unlocker',
@@ -13,6 +13,10 @@ export class WalletUnlockerComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  bind(address: string) {
+    this.walletService.bind(address);
   }
 
 }

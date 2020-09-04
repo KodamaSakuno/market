@@ -1,1 +1,13 @@
-<app-wallet-unlocker></app-wallet-unlocker>
+<div class="container">
+  <div class="row">
+    <app-wallet-unlocker class="mx-auto"></app-wallet-unlocker>
+  </div>
+  <div class="row" *ngIf="isAvailable">
+    <div class="col">
+      <app-inquiry-list></app-inquiry-list>
+    </div>
+    <div class="col">
+      <app-trade-list></app-trade-list>
+    </div>
+  </div>
+</div>
