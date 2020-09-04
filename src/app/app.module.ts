@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { QRCodeModule } from 'angularx-qrcode';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppIconsModule } from './app-icons.module';
@@ -20,6 +21,7 @@ import { IntegerPipe } from './integer.pipe';
 import { AddInquiryModalComponent } from './components/add-inquiry-modal/add-inquiry-modal.component';
 import { QrcodeComponent } from './components/qrcode/qrcode.component';
 import { RemoveAllInquiriesModalComponent } from './components/remove-all-inquiries-modal/remove-all-inquiries-modal.component';
+import { TestTokenComponent } from './components/test-token/test-token.component';
 
 @NgModule({
   declarations: [
@@ -36,12 +38,14 @@ import { RemoveAllInquiriesModalComponent } from './components/remove-all-inquir
     AddInquiryModalComponent,
     QrcodeComponent,
     RemoveAllInquiriesModalComponent,
+    TestTokenComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     NgbModule,
     QRCodeModule,
+    HttpClientModule,
     AppRoutingModule,
     AppIconsModule,
   ],
