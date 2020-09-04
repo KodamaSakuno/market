@@ -27,7 +27,7 @@ export class QrcodeComponent implements OnInit {
     this.refresh();
   }
 
-  qrdata?: string;
+  qrdata!: string;
 
   constructor(private contractService: ContractService) { }
 
