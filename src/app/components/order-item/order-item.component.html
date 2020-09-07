@@ -1,8 +1,8 @@
 <div class="item">
   <div>
-    <span>{{ trade.value }} NAS</span>
+    <span>{{ order.value | integer }} NAS</span>
     BID
-    <span>{{ trade.amount }} NAX</span>
+    <span>{{ order.amount | integer }} {{ order.symbol }}</span>
   </div>
   <div class="d-flex">
     <span class="ml-auto">保证金已付</span>
