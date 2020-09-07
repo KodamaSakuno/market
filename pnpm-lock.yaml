@@ -1,19 +1,19 @@
 dependencies:
   '@angular/animations': 10.1.0_@angular+core@10.1.0
-  '@angular/common': 10.1.0_@angular+core@10.1.0+rxjs@6.6.2
+  '@angular/common': 10.1.0_@angular+core@10.1.0+rxjs@6.6.3
   '@angular/compiler': 10.1.0
-  '@angular/core': 10.1.0_rxjs@6.6.2
-  '@angular/forms': 10.1.0_56bc193a67358dd474b4800b242ff940
+  '@angular/core': 10.1.0_rxjs@6.6.3+zone.js@0.10.3
+  '@angular/forms': 10.1.0_b5bc6205244a9f2d0bfead51653e5a26
   '@angular/localize': 10.1.0_eca19358a32c1f2adedd63b17c7136f8
   '@angular/platform-browser': 10.1.0_454b4c7fad2ac0807b9fe2a7257d94a9
   '@angular/platform-browser-dynamic': 10.1.0_a97a9d02c1c99330bbd30888f3254c60
-  '@angular/router': 10.1.0_56bc193a67358dd474b4800b242ff940
-  '@ng-bootstrap/ng-bootstrap': 7.0.0_9cffdd72591764f1ff2429800cdccb3c
+  '@angular/router': 10.1.0_b5bc6205244a9f2d0bfead51653e5a26
+  '@ng-bootstrap/ng-bootstrap': 7.0.0_1336375d824cdfb9f48b311f9ca2a32f
   angular-feather: 6.0.10_tslib@2.0.1
   angularx-qrcode: 10.0.10_@angular+core@10.1.0
   bignumber.js: 9.0.0
   bootstrap: 4.5.2
-  rxjs: 6.6.2
+  rxjs: 6.6.3
   tslib: 2.0.1
   zone.js: 0.10.3
 devDependencies:
@@ -195,7 +195,7 @@ packages:
       integrity: sha512-5Vl32bHpcB/oj0oNR8nPLXF7DwPVuzrJjosch8G+sPG2gAG6OpwjUhQjY1U6E4xJGDR6j7fX8jw+TwC2cMgUbQ==
   /@angular/animations/10.1.0_@angular+core@10.1.0:
     dependencies:
-      '@angular/core': 10.1.0_rxjs@6.6.2
+      '@angular/core': 10.1.0_rxjs@6.6.3+zone.js@0.10.3
       tslib: 2.0.1
     dev: false
     peerDependencies:
@@ -233,10 +233,10 @@ packages:
     requiresBuild: true
     resolution:
       integrity: sha512-sWGEVeQQ5PXKuu517fRFEQQ5qopzoWeW+8qBUTrmJt8FztiL2ASyu412iJse56wyGxZvqwUmtzpti5kWHR9XIw==
-  /@angular/common/10.1.0_@angular+core@10.1.0+rxjs@6.6.2:
+  /@angular/common/10.1.0_@angular+core@10.1.0+rxjs@6.6.3:
     dependencies:
-      '@angular/core': 10.1.0_rxjs@6.6.2
-      rxjs: 6.6.2
+      '@angular/core': 10.1.0_rxjs@6.6.3+zone.js@0.10.3
+      rxjs: 6.6.3
       tslib: 2.0.1
     dev: false
     peerDependencies:
@@ -284,10 +284,11 @@ packages:
       tslib: ^1.10.0
     resolution:
       integrity: sha512-ctjwuntPfZZT2mNj2NDIVu51t9cvbhl/16epc5xEwyzyDt76pX9UgwvY+MbXrf/C/FWwdtmNtfP698BKI+9leQ==
-  /@angular/core/10.1.0_rxjs@6.6.2:
+  /@angular/core/10.1.0_rxjs@6.6.3+zone.js@0.10.3:
     dependencies:
-      rxjs: 6.6.2
+      rxjs: 6.6.3
       tslib: 2.0.1
+      zone.js: 0.10.3
     dev: false
     peerDependencies:
       rxjs: ^6.5.3
@@ -306,12 +307,12 @@ packages:
       zone.js: ~0.10.2
     resolution:
       integrity: sha512-6Pxgsrf0qF9iFFqmIcWmjJGkkCaCm6V5QNnxMy2KloO3SDq6QuMVRbN9RtC8Urmo25LP+eZ6ZgYqFYpdD8Hd9w==
-  /@angular/forms/10.1.0_56bc193a67358dd474b4800b242ff940:
+  /@angular/forms/10.1.0_b5bc6205244a9f2d0bfead51653e5a26:
     dependencies:
-      '@angular/common': 10.1.0_@angular+core@10.1.0+rxjs@6.6.2
-      '@angular/core': 10.1.0_rxjs@6.6.2
+      '@angular/common': 10.1.0_@angular+core@10.1.0+rxjs@6.6.3
+      '@angular/core': 10.1.0_rxjs@6.6.3+zone.js@0.10.3
       '@angular/platform-browser': 10.1.0_454b4c7fad2ac0807b9fe2a7257d94a9
-      rxjs: 6.6.2
+      rxjs: 6.6.3
       tslib: 2.0.1
     dev: false
     peerDependencies:
@@ -339,9 +340,9 @@ packages:
       integrity: sha512-kwZ88U3dDLw97HbC9XZ2eVUY9C7s3HGEfri7YdRC2c1XCnTi1Aql6Z2tQ3i53YRKcL2dQ72f729AXnEL5q2+MQ==
   /@angular/platform-browser-dynamic/10.1.0_a97a9d02c1c99330bbd30888f3254c60:
     dependencies:
-      '@angular/common': 10.1.0_@angular+core@10.1.0+rxjs@6.6.2
+      '@angular/common': 10.1.0_@angular+core@10.1.0+rxjs@6.6.3
       '@angular/compiler': 10.1.0
-      '@angular/core': 10.1.0_rxjs@6.6.2
+      '@angular/core': 10.1.0_rxjs@6.6.3+zone.js@0.10.3
       '@angular/platform-browser': 10.1.0_454b4c7fad2ac0807b9fe2a7257d94a9
       tslib: 2.0.1
     dev: false
@@ -355,8 +356,8 @@ packages:
   /@angular/platform-browser/10.1.0_454b4c7fad2ac0807b9fe2a7257d94a9:
     dependencies:
       '@angular/animations': 10.1.0_@angular+core@10.1.0
-      '@angular/common': 10.1.0_@angular+core@10.1.0+rxjs@6.6.2
-      '@angular/core': 10.1.0_rxjs@6.6.2
+      '@angular/common': 10.1.0_@angular+core@10.1.0+rxjs@6.6.3
+      '@angular/core': 10.1.0_rxjs@6.6.3+zone.js@0.10.3
       tslib: 2.0.1
     dev: false
     peerDependencies:
@@ -368,12 +369,12 @@ packages:
         optional: true
     resolution:
       integrity: sha512-bYG02qt36lzCBIV6mbAuYPDKU18x9Xd3S3jwJddvoHjRupxwZtTPGWKQ/4qhv1QrLwZnvXbCavIZlrHe68XJbw==
-  /@angular/router/10.1.0_56bc193a67358dd474b4800b242ff940:
+  /@angular/router/10.1.0_b5bc6205244a9f2d0bfead51653e5a26:
     dependencies:
-      '@angular/common': 10.1.0_@angular+core@10.1.0+rxjs@6.6.2
-      '@angular/core': 10.1.0_rxjs@6.6.2
+      '@angular/common': 10.1.0_@angular+core@10.1.0+rxjs@6.6.3
+      '@angular/core': 10.1.0_rxjs@6.6.3+zone.js@0.10.3
       '@angular/platform-browser': 10.1.0_454b4c7fad2ac0807b9fe2a7257d94a9
-      rxjs: 6.6.2
+      rxjs: 6.6.3
       tslib: 2.0.1
     dev: false
     peerDependencies:
@@ -1355,13 +1356,13 @@ packages:
     dev: true
     resolution:
       integrity: sha512-EUCPEkaRPvmHjWAAZkWMT7JDzpw7FKB00WTISaiXsbNOd5hCHg77XLA8sLYLFDo1zepYLo2w7GstN8YBqRXZfA==
-  /@ng-bootstrap/ng-bootstrap/7.0.0_9cffdd72591764f1ff2429800cdccb3c:
+  /@ng-bootstrap/ng-bootstrap/7.0.0_1336375d824cdfb9f48b311f9ca2a32f:
     dependencies:
-      '@angular/common': 10.1.0_@angular+core@10.1.0+rxjs@6.6.2
-      '@angular/core': 10.1.0_rxjs@6.6.2
-      '@angular/forms': 10.1.0_56bc193a67358dd474b4800b242ff940
+      '@angular/common': 10.1.0_@angular+core@10.1.0+rxjs@6.6.3
+      '@angular/core': 10.1.0_rxjs@6.6.3+zone.js@0.10.3
+      '@angular/forms': 10.1.0_b5bc6205244a9f2d0bfead51653e5a26
       '@angular/localize': 10.1.0_eca19358a32c1f2adedd63b17c7136f8
-      rxjs: 6.6.2
+      rxjs: 6.6.3
       tslib: 2.0.1
     dev: false
     peerDependencies:
@@ -1771,7 +1772,7 @@ packages:
       integrity: sha512-wROjIl39pt0VApzxElZ7zs53OLksSleIA1jKntQs5pWZ1mfHklEGkcOQxsiEHVshQZa/c1HjMMtk+7G8YtJSFA==
   /angularx-qrcode/10.0.10_@angular+core@10.1.0:
     dependencies:
-      '@angular/core': 10.1.0_rxjs@6.6.2
+      '@angular/core': 10.1.0_rxjs@6.6.3+zone.js@0.10.3
       qrcode: 1.4.2
       tslib: 2.0.1
     dev: false
@@ -7696,10 +7697,19 @@ packages:
   /rxjs/6.6.2:
     dependencies:
       tslib: 1.13.0
+    dev: true
     engines:
       npm: '>=2.0.0'
     resolution:
       integrity: sha512-BHdBMVoWC2sL26w//BCu3YzKT4s2jip/WhwsGEDmeKYBhKDZeYezVUnHatYB7L85v5xs0BAQmg6BEYJEKxBabg==
+  /rxjs/6.6.3:
+    dependencies:
+      tslib: 1.13.0
+    dev: false
+    engines:
+      npm: '>=2.0.0'
+    resolution:
+      integrity: sha512-trsQc+xYYXZ3urjOiJOuCOa5N3jAZ3eiSpQB5hIT8zGlL2QfnHLJ2r7GMkBGuIausdJN1OneaI6gQlsqNHHmZQ==
   /safe-buffer/5.1.2:
     resolution:
       integrity: sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==
@@ -9529,7 +9539,7 @@ specifiers:
   karma-jasmine: ~3.3.0
   karma-jasmine-html-reporter: ^1.5.0
   protractor: ~7.0.0
-  rxjs: ~6.6.2
+  rxjs: ~6.6.3
   ts-node: ~8.3.0
   tslib: ^2.0.0
   tslint: ~6.1.0
