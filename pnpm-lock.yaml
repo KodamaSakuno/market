@@ -13,6 +13,7 @@ dependencies:
   angularx-qrcode: 10.0.10_@angular+core@10.1.0
   bignumber.js: 9.0.0
   bootstrap: 4.5.2
+  ngx-device-detector: 2.0.0_09afe740ab51c87171d46fd36c85eca2
   rxjs: 6.6.3
   tslib: 2.0.1
   zone.js: 0.10.3
@@ -276,9 +277,7 @@ packages:
     dev: false
     resolution:
       integrity: sha512-PBHH59B2yTT/h2HxrlGGm8W5taHkcEk39FXiycSBrbt3T5QiExUXMJoUERviPQCUeHCWWsi1Fpu9wK2fgnP/Qw==
-  /@angular/compiler/9.0.0_tslib@1.13.0:
-    dependencies:
-      tslib: 1.13.0
+  /@angular/compiler/9.0.0:
     dev: true
     peerDependencies:
       tslib: ^1.10.0
@@ -295,10 +294,9 @@ packages:
       zone.js: ~0.10.3
     resolution:
       integrity: sha512-lENt8Wk1vVsIiHeZVzXCZoHY13BxkqmulEw/AdUOh4VQxoU5K3z1o7fC1cvPHBvBEUnhbD2pDC1UHcY1G9yLRw==
-  /@angular/core/9.0.0_b60c80369c96760de9b1fe4cefc8589f:
+  /@angular/core/9.0.0_rxjs@6.5.5+zone.js@0.10.3:
     dependencies:
       rxjs: 6.5.5
-      tslib: 1.13.0
       zone.js: 0.10.3
     dev: true
     peerDependencies:
@@ -2681,8 +2679,8 @@ packages:
       integrity: sha512-q5/jG+YQnSy4nRTV4F7lPepBJZ8qBNJJDBuJdoejDyLXgmL7IEo+Le2JDZudFTFt7mrCqIRaSjws4ygRCTCAXA==
   /codelyzer/6.0.0_tslint@6.1.3:
     dependencies:
-      '@angular/compiler': 9.0.0_tslib@1.13.0
-      '@angular/core': 9.0.0_b60c80369c96760de9b1fe4cefc8589f
+      '@angular/compiler': 9.0.0
+      '@angular/core': 9.0.0_rxjs@6.5.5+zone.js@0.10.3
       app-root-path: 3.0.0
       aria-query: 3.0.0
       axobject-query: 2.0.2
@@ -6044,6 +6042,17 @@ packages:
     dev: true
     resolution:
       integrity: sha1-yobR/ogoFpsBICCOPchCS524NCw=
+  /ngx-device-detector/2.0.0_09afe740ab51c87171d46fd36c85eca2:
+    dependencies:
+      '@angular/common': 10.1.0_@angular+core@10.1.0+rxjs@6.6.3
+      '@angular/core': 10.1.0_rxjs@6.6.3+zone.js@0.10.3
+      tslib: 2.0.1
+    dev: false
+    peerDependencies:
+      '@angular/common': '>=7.0.0 <9.0.0 || ^9.0.0-0 ||^10.0.11'
+      '@angular/core': '>=7.0.0 <9.0.0 || ^9.0.0-0 || ^10.0.11'
+    resolution:
+      integrity: sha512-0minaW2+Y6dJSKhQrcE3yi8lRa2oAhttgLY5K/K1KRcAPy5yhojY/hpuJko7ANYhttOSxrzxEWhf3novEiSXcg==
   /nice-try/1.0.5:
     dev: true
     resolution:
@@ -9538,6 +9547,7 @@ specifiers:
   karma-coverage-istanbul-reporter: ~3.0.2
   karma-jasmine: ~3.3.0
   karma-jasmine-html-reporter: ^1.5.0
+  ngx-device-detector: ^2.0.0
   protractor: ~7.0.0
   rxjs: ~6.6.3
   ts-node: ~8.3.0

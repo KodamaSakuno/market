@@ -35,11 +35,16 @@ declare global {
     setRequest(httpRequest: HttpRequest): void;
   }
 
+  export class Account {
+    static isValidAddress(address: string | null): boolean;
+  }
+
   export class HttpRequest {
     constructor(prefix: string);
   }
 
   type NebPayConfig = {
+    mainnetUrl: string,
     testnetUrl: string,
   }
 

@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { DeviceDetectorService } from 'ngx-device-detector';
+
 import { ContractService } from '../../services/contract.service';
 
 @Component({
@@ -7,6 +9,8 @@ import { ContractService } from '../../services/contract.service';
   styleUrls: ['./qrcode.component.styl']
 })
 export class QrcodeComponent implements OnInit {
+  instance: symbol;
+
   @Input()
   to?: string;
 
@@ -27,9 +31,17 @@ export class QrcodeComponent implements OnInit {
     this.refresh();
   }
 
+  get isMobile() {
+    return this.deviceService.isMobile();
+  }
+
+  jumped = false;
+
   qrdata!: string;
 
-  constructor(private contractService: ContractService) { }
+  constructor(private contractService: ContractService, private deviceService: DeviceDetectorService) {
+    this.instance = Symbol();
+  }
 
   ngOnInit(): void {
     this.refresh();
@@ -39,14 +51,34 @@ export class QrcodeComponent implements OnInit {
     if (!this.to || !this.func)
       throw new Error("Parameter(s) missed");
 
-    this.qrdata = this.contractService.generateQRDataForCall(this.to, this.value, this.func, this.args);
+    const { data, promise } = this.contractService.generateQRDataForCall(this.instance, this.to, this.value, this.func, this.args);
+
+    this.qrdata = data;
+    this._handlePromise(promise);
   }
 
   useExtension() {
     if (!this.to || !this.func || !this.args)
       throw new Error("Parameter(s) missed");
 
-    this.contractService.callWithPay(this.to, this.func, this.value, this.args);
+    this._handlePromise(this.contractService.callWithPay(this.to, this.func, this.value, this.args));
+  }
+
+  private _handlePromise(promise: Promise<unknown>) {
+    promise.then(() => {
+
+    }).catch(() => {
+
+    });
+  }
+
+  jumpToNasNano() {
+    window.location.href = `openapp.NASnano://virtual?params=${this.qrdata}`;
+
+    this.jumped = true;
+  }
+  manualConfirm() {
+
   }
 
 }

@@ -1,0 +1,34 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">增加发盘</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="container">
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label>NAS</label>
+        <input class="form-control" [(ngModel)]="value" required />
+      </div>
+      <div class="col-md-4 mb-3 text-center">
+        BID
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>NAX</label>
+        <input class="form-control" [(ngModel)]="amount" required />
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <button class="btn btn-primary" [disabled]="!isPayable" (click)="payCurrency()">支付 NAS 挂单</button>
+      </div>
+      <div class="col-md-4 mb-3 text-center">
+        {{ ratio }}
+      </div>
+      <div class="col-md-4 mb-3">
+        <button class="btn btn-primary" [disabled]="!isPayable" (click)="payToken()">支付 NAX 挂单</button>
+      </div>
+    </div>
+  </div>
+</div>

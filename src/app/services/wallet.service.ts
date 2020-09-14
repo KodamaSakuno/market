@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
+const WalletKey = 'wallet';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +12,12 @@ export class WalletService {
   isAvailable = new Subject<boolean>();
 
   constructor() {
-    this.address = localStorage.getItem("wallet");
+    this.address = localStorage.getItem(WalletKey);
+
+    if (!Account.isValidAddress(this.address)) {
+      this.address = null;
+      localStorage.removeItem(WalletKey);
+    }
   }
 
   checkBinded() {
@@ -18,9 +25,15 @@ export class WalletService {
   }
 
   bind(address: string) {
-    this.address = address;
-    localStorage.setItem("wallet", address);
+    if (!Account.isValidAddress(address)) {
+      alert('地址无效');
+      return;
+    }
 
-    this.isAvailable.next(!!address);
+    this.address = address;
+    localStorage.setItem(WalletKey, address);
+
+    this.isAvailable.next(false);
+    this.isAvailable.next(true);
   }
 }

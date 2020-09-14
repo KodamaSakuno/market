@@ -22,6 +22,10 @@ import { RemoveAllInquiriesModalComponent } from './components/remove-all-inquir
 import { TestTokenComponent } from './components/test-token/test-token.component';
 import { OrderListComponent } from './components/order-list/order-list.component';
 import { OrderItemComponent } from './components/order-item/order-item.component';
+import { AddOrderModalComponent } from './components/add-order-modal/add-order-modal.component';
+import { OrderDetailModalComponent } from './components/order-detail-modal/order-detail-modal.component';
+import { PayCurrencyModalComponent } from './components/pay-currency-modal/pay-currency-modal.component';
+import { PayTokenModalComponent } from './components/pay-token-modal/pay-token-modal.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +43,10 @@ import { OrderItemComponent } from './components/order-item/order-item.component
     TestTokenComponent,
     OrderListComponent,
     OrderItemComponent,
+    AddOrderModalComponent,
+    OrderDetailModalComponent,
+    PayCurrencyModalComponent,
+    PayTokenModalComponent,
   ],
   imports: [
     BrowserModule,

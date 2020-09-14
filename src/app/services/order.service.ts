@@ -1,35 +1,22 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { defer } from 'rxjs';
 
-import { Order } from '../types/Order';
+import { ContractService } from './contract.service';
+import { Order, OrderDto } from '../types/Order';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
 
-  constructor() { }
+  constructor(private contractService: ContractService) { }
 
   getOrders() {
-    return of([
-      new Order({
-        value: '100000000000000000000',
-        amount: '1000000000000000000000',
-        decimals: 18,
-        symbol: 'NRC',
-      }),
-      new Order({
-        value: '150000000000000000000',
-        amount: '1500000000000000000000',
-        decimals: 18,
-        symbol: 'NRC',
-      }),
-      new Order({
-        value: '100000000000000000000',
-        amount: '1000000000000000000000',
-        decimals: 18,
-        symbol: 'NRC',
-      }),
-    ]);
+    return defer(async () => {
+      const { result } = await this.contractService.callPromise(environment.marketAddress, 'getAllOrders');
+
+      return (result as Array<OrderDto>).map(dto => new Order(dto));
+    });
   }
 }

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  marketAddress: 'n1gEtoFxn9oHWByQ4C5kRJ3Rr8wjbDh1hxx',
+  marketAddress: 'n1edqLtqiqCQjtZa6VeyGJj7q66CNXx99Ad',
   tokenAddress: 'n1t14HZ7B4miUcsL2SwL8jGxHSqUQu9paW4',
 };
 

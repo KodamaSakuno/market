@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import BigNumber from 'bignumber.js';
+import { defer } from 'rxjs';
+
+import { environment } from 'src/environments/environment';
 
 import { WalletService } from './wallet.service';
 
@@ -23,13 +26,20 @@ export class ContractService {
   private _neb: Neb;
   private _nebPay: NebPay;
 
+  private _timeoutIds: Map<symbol, NodeJS.Timeout>;
+
   constructor(private walletService: WalletService) {
     this._neb = new Neb();
     this._neb.setRequest(new HttpRequest('https://testnet.nebulas.io'));
 
     this._nebPay = new NebPay();
+
+    this._timeoutIds = new Map<symbol, NodeJS.Timeout>();
   }
 
+  async call(contractAddress: string, method: string, args: any[] = []) {
+    return defer(() => this.callPromise(contractAddress, method, args));
+  }
   async callPromise(contractAddress: string, method: string, args: any[] = []) {
     const { nonce } = await this._neb.api.getAccountState(this.walletService.address!);
     const { result, execute_err, estimate_gas } = await this._neb.api.call({
@@ -55,27 +65,54 @@ export class ContractService {
     };
   }
 
-  generateQRDataForCall(to: string, value: string, func: string, args: any[] = []) {
-    return JSON.stringify({
-      category: 'jump',
-      des: 'confirmTransfer',
-      pageParams: {
-        serialNumber: randomCode(32),
-        pay: {
-          currency: 'NAS',
-          to,
-          value,
-          payload: {
-            type: 'call',
-            function: func,
-            args: JSON.stringify(args),
-          },
-          gasLimit: '200000',
-          gasPrice: '20000000000',
-        },
-      },
-      callback: 'https://pay.nebulas.io/api/pay',
+  generateQRDataForCall(qrcodeInstance: symbol, to: string, value: string, func: string, args: any[] = []) {
+    let timeoutId = this._timeoutIds.get(qrcodeInstance);
+    if (timeoutId)
+      clearTimeout(timeoutId);
+
+    const serialNumber = randomCode(32);
+    const promise = new Promise((resolve, reject) => {
+      const checkPayInfo = async (sn: string) => {
+        const res = JSON.parse(await this._nebPay.queryPayInfo(sn, { callback: NebPay.config.testnetUrl }));
+        console.info(res);
+        if (res.code !== 0) {
+          reject();
+          return;
+        }
+
+        if (res.data.status === 1)
+          resolve();
+        else if (res.data.status === 2) {
+          this._timeoutIds.set(qrcodeInstance, setTimeout(() => checkPayInfo(sn), 5000));
+        }
+      };
+
+      checkPayInfo(serialNumber);
     });
+
+    return {
+      data: JSON.stringify({
+        category: 'jump',
+        des: 'confirmTransfer',
+        pageParams: {
+          serialNumber,
+          pay: {
+            currency: 'NAS',
+            to,
+            value: new BigNumber(value).times(new BigNumber(10).pow(18)).toString(10),
+            payload: {
+              type: 'call',
+              function: func,
+              args: JSON.stringify(args),
+            },
+            gasLimit: '200000',
+            gasPrice: '20000000000',
+          },
+        },
+        callback: 'https://pay.nebulas.io/api/pay',
+      }),
+      promise,
+    };
   }
   callWithPay(to: string, method: string, value: string, args: any[]) {
     return new Promise((resolve, reject) => {
