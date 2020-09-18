@@ -1,9 +1,14 @@
 import { BigNumber } from 'bignumber.js';
 
+export const enum OrderType {
+  NasToToken = "NAS->Token",
+  TokenToNas = "Token->Nas",
+}
+
 export type OrderDto = {
   id: string,
   owner: string,
-  type: string,
+  type: OrderType,
   trader: string | null,
   token: string,
   value: string,
@@ -23,7 +28,7 @@ export const enum PaidState {
 export class Order {
   id: string;
   owner: string;
-  type: string;
+  type: OrderType;
   trader: string | null;
   value: BigNumber;
   amount: BigNumber;
@@ -33,7 +38,7 @@ export class Order {
   symbol: string;
 
   get ratio() {
-    return this.amount.div(this.value);
+    return this.amount.div(this.value).toFixed(0);
   }
 
   get currencyPaidState() {
@@ -60,10 +65,10 @@ export class Order {
     this.owner = dto.owner;
     this.type = dto.type;
     this.trader = dto.trader;
-    this.value = new BigNumber(dto.value).div(new BigNumber(10).pow(18));
-    this.amount = new BigNumber(dto.amount).div(new BigNumber(10).pow(dto.decimals));
-    this.paidValue = new BigNumber(dto.paidValue).div(new BigNumber(10).pow(18));
-    this.paidAmount = new BigNumber(dto.paidAmount).div(new BigNumber(10).pow(dto.decimals));
+    this.value = new BigNumber(dto.value);
+    this.amount = new BigNumber(dto.amount);
+    this.paidValue = new BigNumber(dto.paidValue);
+    this.paidAmount = new BigNumber(dto.paidAmount);
     this.decimals = dto.decimals;
     this.symbol = dto.symbol;
   }

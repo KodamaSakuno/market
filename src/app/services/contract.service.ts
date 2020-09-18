@@ -26,7 +26,7 @@ export class ContractService {
   private _neb: Neb;
   private _nebPay: NebPay;
 
-  private _timeoutIds: Map<symbol, NodeJS.Timeout>;
+  private _timeoutIds: Map<symbol, number>;
 
   constructor(private walletService: WalletService) {
     this._neb = new Neb();
@@ -34,10 +34,10 @@ export class ContractService {
 
     this._nebPay = new NebPay();
 
-    this._timeoutIds = new Map<symbol, NodeJS.Timeout>();
+    this._timeoutIds = new Map<symbol, number>();
   }
 
-  async call(contractAddress: string, method: string, args: any[] = []) {
+  call(contractAddress: string, method: string, args: any[] = []) {
     return defer(() => this.callPromise(contractAddress, method, args));
   }
   async callPromise(contractAddress: string, method: string, args: any[] = []) {
@@ -65,7 +65,7 @@ export class ContractService {
     };
   }
 
-  generateQRDataForCall(qrcodeInstance: symbol, to: string, value: string, func: string, args: any[] = []) {
+  generateQRDataForCall(qrcodeInstance: symbol, to: string, value: string | BigNumber, func: string, args: any[] = []) {
     let timeoutId = this._timeoutIds.get(qrcodeInstance);
     if (timeoutId)
       clearTimeout(timeoutId);
@@ -90,6 +90,9 @@ export class ContractService {
       checkPayInfo(serialNumber);
     });
 
+    if (typeof value === 'string')
+      value = new BigNumber(value);
+
     return {
       data: JSON.stringify({
         category: 'jump',
@@ -99,11 +102,11 @@ export class ContractService {
           pay: {
             currency: 'NAS',
             to,
-            value: new BigNumber(value).times(new BigNumber(10).pow(18)).toString(10),
+            value,
             payload: {
               type: 'call',
               function: func,
-              args: JSON.stringify(args),
+              args: JSON.stringify(this._formatArgs(args)),
             },
             gasLimit: '200000',
             gasPrice: '20000000000',
@@ -114,7 +117,7 @@ export class ContractService {
       promise,
     };
   }
-  callWithPay(to: string, method: string, value: string, args: any[]) {
+  callWithPay(to: string, method: string, value: string | BigNumber, args: any[]) {
     return new Promise((resolve, reject) => {
       const checkPayInfo = async (sn: string) => {
         const res = JSON.parse(await this._nebPay.queryPayInfo(sn, { callback: NebPay.config.testnetUrl }));
@@ -130,12 +133,30 @@ export class ContractService {
           setTimeout(() => checkPayInfo(sn), 5000);
       };
 
-      this._nebPay.call(to, value, method, JSON.stringify(args), {
+      if (typeof value === 'string')
+        value = new BigNumber(value);
+
+      value = value.div(new BigNumber(10).pow(18)).toString(10);
+
+      this._nebPay.call(to, value, method, JSON.stringify(this._formatArgs(args)), {
         gasLimit: '200000',
         gasPrice: '20000000000',
         callback: NebPay.config.testnetUrl,
         listener: (sn: string) => checkPayInfo(sn),
       });
     });
+  }
+
+  private _formatArgs(args: any[]) {
+    for (let i = 0; i < args.length; i++) {
+      const item = args[i];
+
+      if (item instanceof BigNumber)
+        args[i] = item.toString(10);
+      else if (Array.isArray(item))
+        this._formatArgs(item);
+    }
+
+    return args;
   }
 }

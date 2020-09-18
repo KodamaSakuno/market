@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { defer } from 'rxjs';
+import { defer, Subject } from 'rxjs';
 
 import { ContractService } from './contract.service';
 import { Order, OrderDto } from '../types/Order';
@@ -10,13 +10,19 @@ import { environment } from 'src/environments/environment';
 })
 export class OrderService {
 
+  orders$ = new Subject<Array<Order>>();
+
   constructor(private contractService: ContractService) { }
 
-  getOrders() {
-    return defer(async () => {
-      const { result } = await this.contractService.callPromise(environment.marketAddress, 'getAllOrders');
+  async getOrders() {
+    const { result } = await this.contractService.callPromise(environment.marketAddress, 'getAllOrders');
 
-      return (result as Array<OrderDto>).map(dto => new Order(dto));
-    });
+    this.orders$.next((result as Array<OrderDto>).map(dto => new Order(dto)));
+  }
+
+  async getOrder(id: string) {
+    const { result } = await this.contractService.callPromise(environment.marketAddress, 'getOrder', [id]);
+
+    return new Order(result);
   }
 }

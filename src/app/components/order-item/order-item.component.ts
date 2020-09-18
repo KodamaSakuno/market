@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { Order, PaidState } from '../../types/Order';
+import { Order } from '../../types/Order';
 import { OrderDetailModalComponent } from '../order-detail-modal/order-detail-modal.component';
 
 @Component({
@@ -21,6 +21,6 @@ export class OrderItemComponent implements OnInit {
   showDetail() {
     const modal = this.modalService.open(OrderDetailModalComponent);
 
-    modal.componentInstance.inquiry = this.order;
+    modal.componentInstance.order = this.order;
   }
 }

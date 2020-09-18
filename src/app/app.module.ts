@@ -24,8 +24,14 @@ import { OrderListComponent } from './components/order-list/order-list.component
 import { OrderItemComponent } from './components/order-item/order-item.component';
 import { AddOrderModalComponent } from './components/add-order-modal/add-order-modal.component';
 import { OrderDetailModalComponent } from './components/order-detail-modal/order-detail-modal.component';
-import { PayCurrencyModalComponent } from './components/pay-currency-modal/pay-currency-modal.component';
-import { PayTokenModalComponent } from './components/pay-token-modal/pay-token-modal.component';
+import { AddOrderPayCurrencyModalComponent } from './components/add-order-pay-currency-modal/add-order-pay-currency-modal.component';
+import { AddOrderPayTokenModalComponent } from './components/add-order-pay-token-modal/add-order-pay-token-modal.component';
+import { ConfigComponent } from './pages/config/config.component';
+import { AmountInputComponent } from './components/amount-input/amount-input.component';
+import { BigNumberPipe } from './bignumber.pipe';
+import { OrderDetailPayCurrencyModalComponent } from './components/order-detail-pay-currency-modal/order-detail-pay-currency-modal.component';
+import { OrderDetailPayTokenModalComponent } from './components/order-detail-pay-token-modal/order-detail-pay-token-modal.component';
+import { RemoveOrderModalComponent } from './components/remove-order-modal/remove-order-modal.component';
 
 @NgModule({
   declarations: [
@@ -45,8 +51,14 @@ import { PayTokenModalComponent } from './components/pay-token-modal/pay-token-m
     OrderItemComponent,
     AddOrderModalComponent,
     OrderDetailModalComponent,
-    PayCurrencyModalComponent,
-    PayTokenModalComponent,
+    AddOrderPayCurrencyModalComponent,
+    AddOrderPayTokenModalComponent,
+    ConfigComponent,
+    AmountInputComponent,
+    BigNumberPipe,
+    OrderDetailPayCurrencyModalComponent,
+    OrderDetailPayTokenModalComponent,
+    RemoveOrderModalComponent,
   ],
   imports: [
     BrowserModule,

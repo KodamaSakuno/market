@@ -14,19 +14,25 @@ import { RemoveAllInquiriesModalComponent } from '../remove-all-inquiries-modal/
 export class InquiryListComponent implements OnInit {
   inquiries: Array<Inquiry> = [];
 
-  constructor(private inquiryService: InquiryService, private modalService: NgbModal) { }
-
-  ngOnInit(): void {
-    this.inquiryService.getInquiries().subscribe(inquiries => {
+  constructor(private inquiryService: InquiryService, private modalService: NgbModal) {
+    this.inquiryService.inquiries$.subscribe(inquiries => {
       this.inquiries = inquiries;
     });
   }
 
-  addInquiry() {
-    this.modalService.open(AddInquiryModalComponent);
+  ngOnInit(): void {
+    this.inquiryService.getInquiries();
   }
-  removeAllInquiries() {
-    this.modalService.open(RemoveAllInquiriesModalComponent);
+
+  async addInquiry() {
+    await this.modalService.open(AddInquiryModalComponent).result;
+
+    this.inquiryService.getInquiries();
+  }
+  async removeAllInquiries() {
+    await this.modalService.open(RemoveAllInquiriesModalComponent).result;
+
+    this.inquiryService.getInquiries();
   }
 
 }

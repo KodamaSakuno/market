@@ -26,7 +26,7 @@ export class TokenService {
     return defer(async () => {
       const { result } = await this.contractService.callPromise(environment.tokenAddress, 'allowance', [owner, spender]);
 
-      return new BigNumber(result).div(new BigNumber(10).pow(this.decimals));
+      return new BigNumber(result);
     });
   }
 }

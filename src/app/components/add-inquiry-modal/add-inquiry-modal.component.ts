@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { MarketService } from '../../services/market.service';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../../environments/environment';
+import { TokenService } from '../../services/token.service';
 
 @Component({
   selector: 'app-add-inquiry-modal',
@@ -27,7 +28,7 @@ export class AddInquiryModalComponent implements OnInit {
 
   token: string | null = null;
 
-  constructor(public activeModal: NgbActiveModal, public marketService: MarketService) { }
+  constructor(public activeModal: NgbActiveModal, public marketService: MarketService, public tokenService: TokenService) { }
 
   ngOnInit(): void {
   }

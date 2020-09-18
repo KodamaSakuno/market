@@ -6,7 +6,10 @@ import BigNumber from 'bignumber.js';
 })
 export class IntegerPipe implements PipeTransform {
 
-  transform(value: BigNumber): string {
+  transform(value: string | BigNumber): string {
+    if (typeof value === 'string')
+      value = new BigNumber(value);
+
     return value.toFixed(0);
   }
 

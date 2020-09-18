@@ -1,6 +1,6 @@
 <div class="modal-header">
   <h4 class="modal-title" id="modal-basic-title">增加发盘</h4>
-  <button type="button" class="close" aria-label="Close" (click)="activeModal.close()">
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
@@ -9,25 +9,25 @@
     <div class="form-row">
       <div class="col-md-4 mb-3">
         <label>NAS</label>
-        <input class="form-control" [(ngModel)]="value" required />
+        <app-amount-input [(amount)]="value" [decimals]="18" #valueInput></app-amount-input>
       </div>
       <div class="col-md-4 mb-3 text-center">
         BID
       </div>
       <div class="col-md-4 mb-3">
-        <label>NAX</label>
-        <input class="form-control" [(ngModel)]="amount" required />
+        <label>{{ tokenService.symbol }}</label>
+        <app-amount-input [(amount)]="amount" [decimals]="tokenService.decimals" #amountInput></app-amount-input>
       </div>
     </div>
     <div class="form-row">
       <div class="col-md-4 mb-3">
-        <button class="btn btn-primary" [disabled]="!isPayable" (click)="payCurrency()">支付 NAS 挂单</button>
+        <button class="btn btn-primary" [disabled]="valueInput.isInvalid || amountInput.isInvalid" (click)="payCurrency()">支付 NAS 挂单</button>
       </div>
       <div class="col-md-4 mb-3 text-center">
         {{ ratio }}
       </div>
       <div class="col-md-4 mb-3">
-        <button class="btn btn-primary" [disabled]="!isPayable" (click)="payToken()">支付 NAX 挂单</button>
+        <button class="btn btn-primary" [disabled]="valueInput.isInvalid || amountInput.isInvalid" (click)="payToken()">支付 {{ tokenService.symbol }} 挂单</button>
       </div>
     </div>
   </div>

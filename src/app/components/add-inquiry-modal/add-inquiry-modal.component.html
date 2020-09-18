@@ -1,6 +1,6 @@
 <div class="modal-header">
   <h4 class="modal-title" id="modal-basic-title">增加询盘</h4>
-  <button type="button" class="close" aria-label="Close" (click)="activeModal.close()">
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
@@ -11,9 +11,9 @@
       <input ngbButton type="radio" value="nas"> NAS
     </label>
     <label ngbButtonLabel class="btn-primary">
-      <input ngbButton type="radio" value="nax"> NAX
+      <input ngbButton type="radio" value="nax"> {{ tokenService.symbol }}
     </label>
   </div>
   <hr *ngIf="selected">
-  <app-qrcode [to]="marketService.contractAddress" func="addInquiry" [args]="[token]" *ngIf="selected"></app-qrcode>
+  <app-qrcode [to]="marketService.contractAddress" func="addInquiry" [args]="[token]" *ngIf="selected" (success)="activeModal.close()"></app-qrcode>
 </div>

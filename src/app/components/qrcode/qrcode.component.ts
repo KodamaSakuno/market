@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
+import BigNumber from 'bignumber.js';
 import { DeviceDetectorService } from 'ngx-device-detector';
 
 import { ContractService } from '../../services/contract.service';
@@ -15,7 +16,7 @@ export class QrcodeComponent implements OnInit {
   to?: string;
 
   @Input()
-  value = "0";
+  value: string | BigNumber = "0";
 
   @Input()
   func?: string;
@@ -38,6 +39,9 @@ export class QrcodeComponent implements OnInit {
   jumped = false;
 
   qrdata!: string;
+
+  @Output()
+  success = new EventEmitter();
 
   constructor(private contractService: ContractService, private deviceService: DeviceDetectorService) {
     this.instance = Symbol();
@@ -66,7 +70,7 @@ export class QrcodeComponent implements OnInit {
 
   private _handlePromise(promise: Promise<unknown>) {
     promise.then(() => {
-
+      this.success.emit();
     }).catch(() => {
 
     });
@@ -78,7 +82,7 @@ export class QrcodeComponent implements OnInit {
     this.jumped = true;
   }
   manualConfirm() {
-
+    this.success.emit();
   }
 
 }

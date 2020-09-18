@@ -7,45 +7,24 @@ import { TokenService } from '../../services/token.service';
 import { WalletService } from '../../services/wallet.service';
 
 @Component({
-  selector: 'app-pay-token-modal',
-  templateUrl: './pay-token-modal.component.html',
-  styleUrls: ['./pay-token-modal.component.styl']
+  selector: 'app-add-order-pay-token-modal',
+  templateUrl: './add-order-pay-token-modal.component.html',
+  styleUrls: ['./add-order-pay-token-modal.component.styl']
 })
-export class PayTokenModalComponent implements OnInit {
+export class AddOrderPayTokenModalComponent implements OnInit {
 
-  deposit = new BigNumber(NaN);
+  deposit!: BigNumber;
   max!: BigNumber;
 
-  private _amount = '';
-  get amount() {
-    return this._amount;
-  }
-  set amount(val: string) {
-    this._amount = val;
-    this._amountBn = new BigNumber(val);
-  }
-
-  private _amountBn = new BigNumber(NaN);
-
-  get isAmountValid() {
-    return !this._amountBn.isNaN();
-  }
-
-  get amountArg() {
-    return this._amountBn.times(new BigNumber(10).pow(this.tokenService.decimals)).toString(10);
-  }
+  amount!: BigNumber;
 
   orderValueArg!:string;
   orderAmountArg!:string;
 
   allowance = new BigNumber(NaN);
 
-  get currentAllowanceArg() {
-    return this.allowance.times(new BigNumber(10).pow(this.tokenService.decimals)).toString(10);
-  }
-
   get isInsuffientAllowance() {
-    return this.allowance.lt(this._amountBn);
+    return this.allowance.lt(this.amount);
   }
 
   constructor(public activeModal: NgbActiveModal, public marketService: MarketService,
