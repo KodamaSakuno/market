@@ -32,6 +32,7 @@ import { BigNumberPipe } from './bignumber.pipe';
 import { OrderDetailPayCurrencyModalComponent } from './components/order-detail-pay-currency-modal/order-detail-pay-currency-modal.component';
 import { OrderDetailPayTokenModalComponent } from './components/order-detail-pay-token-modal/order-detail-pay-token-modal.component';
 import { RemoveOrderModalComponent } from './components/remove-order-modal/remove-order-modal.component';
+import { TxsComponent } from './pages/txs/txs.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { RemoveOrderModalComponent } from './components/remove-order-modal/remov
     OrderDetailPayCurrencyModalComponent,
     OrderDetailPayTokenModalComponent,
     RemoveOrderModalComponent,
+    TxsComponent,
   ],
   imports: [
     BrowserModule,

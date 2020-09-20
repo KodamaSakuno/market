@@ -13,6 +13,8 @@ export class MainComponent implements OnInit {
 
   isAvailable = false;
 
+  isDetailOrderList = false;
+
   constructor(private walletService: WalletService, private tokenService: TokenService, private marketService: MarketService) {
     this.walletService.isAvailable.subscribe(isAvailable => {
       this.isAvailable = isAvailable;

@@ -5,7 +5,10 @@ export type Config = {
   maxValue: string | BigNumber,
   minAmount: string | BigNumber,
   maxAmount: string | BigNumber,
-  a: number,
-  b: number,
+  ratioProtectRange: number,
+  valueProtectRange: number,
   deposit: number,
+  fee: number,
+  fee50Receiver: string,
+  fee10Receivers: Array<string>,
 }

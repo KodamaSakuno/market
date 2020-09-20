@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { OrderService } from '../../services/order.service';
@@ -12,6 +12,11 @@ import { RemoveOrderModalComponent } from '../remove-order-modal/remove-order-mo
   styleUrls: ['./order-list.component.styl']
 })
 export class OrderListComponent implements OnInit {
+
+  @Input()
+  isDetail = false;
+  @Output()
+  isDetailChange = new EventEmitter<boolean>();
 
   orders: Array<Order> = [];
 
@@ -36,4 +41,8 @@ export class OrderListComponent implements OnInit {
     this.orderService.getOrders();
   }
 
+  toggleDetail() {
+    this.isDetail = !this.isDetail;
+    this.isDetailChange.emit(this.isDetail);
+  }
 }

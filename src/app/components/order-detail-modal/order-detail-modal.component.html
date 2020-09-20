@@ -38,6 +38,6 @@
   <p>已付 NAS：{{ order.paidValue | bignumber:18 }}</p>
   <p>已付 {{ order.symbol }}：{{ order.paidAmount | bignumber:order.decimals }}</p>
 </div>
-<div class="modal-footer">
+<div class="modal-footer" *ngIf="cancellable">
   <button class="btn btn-primary" (click)="cancelOrder()">撤销</button>
 </div>

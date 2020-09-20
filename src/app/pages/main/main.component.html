@@ -3,14 +3,14 @@
     <app-wallet-unlocker class="mx-auto"></app-wallet-unlocker>
   </div>
   <div class="row" *ngIf="isAvailable">
-    <div class="col">
+    <div class="col" [class.d-none]="isDetailOrderList">
       <app-inquiry-list></app-inquiry-list>
     </div>
     <div class="col">
-      <app-order-list></app-order-list>
+      <app-order-list [(isDetail)]="isDetailOrderList"></app-order-list>
     </div>
   </div>
-  <div class="row" *ngIf="isAvailable">
+  <div *ngIf="isAvailable">
     <app-test-token></app-test-token>
   </div>
 </div>

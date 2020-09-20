@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { InquiryService } from '../../services/inquiry.service';
@@ -14,7 +15,7 @@ import { RemoveAllInquiriesModalComponent } from '../remove-all-inquiries-modal/
 export class InquiryListComponent implements OnInit {
   inquiries: Array<Inquiry> = [];
 
-  constructor(private inquiryService: InquiryService, private modalService: NgbModal) {
+  constructor(private inquiryService: InquiryService, private modalService: NgbModal, private router: Router) {
     this.inquiryService.inquiries$.subscribe(inquiries => {
       this.inquiries = inquiries;
     });
@@ -33,6 +34,10 @@ export class InquiryListComponent implements OnInit {
     await this.modalService.open(RemoveAllInquiriesModalComponent).result;
 
     this.inquiryService.getInquiries();
+  }
+
+  gotoTxs() {
+    this.router.navigate(['txs']);
   }
 
 }
