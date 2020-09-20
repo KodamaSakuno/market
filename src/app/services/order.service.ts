@@ -23,6 +23,9 @@ export class OrderService {
   async getOrder(id: string) {
     const { result } = await this.contractService.callPromise(environment.marketAddress, 'getOrder', [id]);
 
+    if (!result)
+      return null;
+
     return new Order(result);
   }
 }

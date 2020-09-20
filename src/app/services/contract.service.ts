@@ -46,8 +46,8 @@ export class ContractService {
       from: this.walletService.address!,
       to: contractAddress,
       value: '0',
-      gasLimit: new BigNumber('200000', 10).toNumber(),
-      gasPrice: new BigNumber('20000000000', 10).toNumber(),
+      gasLimit: 200000,
+      gasPrice: 20000000000,
       nonce: parseInt(nonce) + 1,
       contract: {
         function: method,
@@ -76,13 +76,16 @@ export class ContractService {
         const res = JSON.parse(await this._nebPay.queryPayInfo(sn, { callback: NebPay.config.testnetUrl }));
         console.info(res);
         if (res.code !== 0) {
-          reject();
           return;
         }
 
-        if (res.data.status === 1)
+        const { status } = res.data;
+
+        if (status === 0)
+          reject(res.data.execute_error);
+        else if (status === 1)
           resolve();
-        else if (res.data.status === 2) {
+        else if (status === 2) {
           this._timeoutIds.set(qrcodeInstance, setTimeout(() => checkPayInfo(sn), 5000));
         }
       };
@@ -123,13 +126,16 @@ export class ContractService {
         const res = JSON.parse(await this._nebPay.queryPayInfo(sn, { callback: NebPay.config.testnetUrl }));
         console.info(res);
         if (res.code !== 0) {
-          reject();
           return;
         }
 
-        if (res.data.status === 1)
+        const { status } = res.data;
+
+        if (status === 0)
+          reject(res.data.execute_error);
+        else if (status === 1)
           resolve();
-        else if (res.data.status === 2)
+        else if (status === 2)
           setTimeout(() => checkPayInfo(sn), 5000);
       };
 

@@ -27,13 +27,13 @@ export class OrderDetailModalComponent implements OnInit {
     this.cancellable = this.order.owner === this.walletService.address && !this.order.trader;
   }
 
-  async payCurrency() {
+  payCurrency() {
     const modal = this.modalService.open(OrderDetailPayCurrencyModalComponent);
 
     const remaining = this.order.value.minus(this.order.paidValue);
     const min = this.order.trader !== null ?
-      BigNumber.min(remaining, this.order.value.div(new BigNumber(10))) :
-      this.order.value.div(new BigNumber(100)).times(new BigNumber(this.marketService.config.deposit));
+      BigNumber.min(remaining, this.order.value.div(10)) :
+      this.order.value.div(100).times(this.marketService.config.deposit);
 
     Object.assign(modal.componentInstance, {
       isNewTrader: this.order.trader === null,
@@ -43,18 +43,15 @@ export class OrderDetailModalComponent implements OnInit {
       args: [this.order.id],
     });
 
-    await modal.result;
-
-    this.orderService.getOrders();
-    this.order = await this.orderService.getOrder(this.order.id);
+    modal.result.then(() => this._handleSuccessfulPay());
   }
-  async payToken() {
+  payToken() {
     const modal = this.modalService.open(OrderDetailPayTokenModalComponent);
 
     const remaining = this.order.amount.minus(this.order.paidAmount);
     const min = this.order.trader !== null ?
-      BigNumber.min(remaining, this.order.amount.div(new BigNumber(10))) :
-      this.order.amount.div(new BigNumber(100)).times(new BigNumber(this.marketService.config.deposit));
+      BigNumber.min(remaining, this.order.amount.div(10)) :
+      this.order.amount.div(100).times(this.marketService.config.deposit);
 
     Object.assign(modal.componentInstance, {
       isNewTrader: this.order.trader === null,
@@ -64,10 +61,19 @@ export class OrderDetailModalComponent implements OnInit {
       order: this.order,
     });
 
-    await modal.result;
-
+    modal.result.then(() => this._handleSuccessfulPay());
+  }
+  private async _handleSuccessfulPay() {
     this.orderService.getOrders();
-    this.order = await this.orderService.getOrder(this.order.id);
+
+    const order = await this.orderService.getOrder(this.order.id);
+
+    if (!order) {
+      this.activeModal.close();
+      return;
+    }
+
+    this.order = order;
   }
 
   async cancelOrder() {

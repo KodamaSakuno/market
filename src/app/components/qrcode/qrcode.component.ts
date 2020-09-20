@@ -71,8 +71,8 @@ export class QrcodeComponent implements OnInit {
   private _handlePromise(promise: Promise<unknown>) {
     promise.then(() => {
       this.success.emit();
-    }).catch(() => {
-
+    }).catch(reason => {
+      alert(reason);
     });
   }
 

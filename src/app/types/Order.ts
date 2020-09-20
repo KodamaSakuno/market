@@ -1,6 +1,6 @@
 import { BigNumber } from 'bignumber.js';
 
-export const enum OrderType {
+export enum OrderType {
   NasToToken = "NAS->Token",
   TokenToNas = "Token->Nas",
 }
@@ -42,7 +42,7 @@ export class Order {
   }
 
   get currencyPaidState() {
-    if (this.paidValue.eq(new BigNumber(0)))
+    if (this.paidValue.eq(0))
       return PaidState.Unpaid;
 
     if (this.paidValue.eq(this.value))
@@ -51,7 +51,7 @@ export class Order {
     return PaidState.DepositPaid;
   }
   get tokenPaidState() {
-    if (this.paidAmount.eq(new BigNumber(0)))
+    if (this.paidAmount.eq(0))
       return PaidState.Unpaid;
 
     if (this.paidAmount.eq(this.amount))

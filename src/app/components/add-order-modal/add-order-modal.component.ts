@@ -34,7 +34,7 @@ export class AddOrderModalComponent implements OnInit {
 
     Object.assign(modal.componentInstance, {
       max: this.value,
-      deposit: this.value.times(new BigNumber(this.marketService.config.deposit)).div(new BigNumber(100)),
+      deposit: this.value.div(100).times(this.marketService.config.deposit),
       value: this.value,
       args: [this.tokenService.contractAddress, this.value.toString(10), this.amount.toString(10)],
     });
@@ -48,7 +48,7 @@ export class AddOrderModalComponent implements OnInit {
 
     Object.assign(modal.componentInstance, {
       max: this.amount,
-      deposit: this.amount.times(new BigNumber(this.marketService.config.deposit)).div(new BigNumber(100)),
+      deposit: this.amount.div(100).times(this.marketService.config.deposit),
       amount: this.amount,
       orderValueArg: this.value.toString(10),
       orderAmountArg: this.amount.toString(10),
