@@ -18,7 +18,7 @@
           <tr *ngFor="let transaction of transactions">
             <th scope="row">{{ transaction.blockHeight }}</th>
             <td>{{ transaction.order.owner | slice:-6 }}</td>
-            <td>{{ transaction.order.trader | slice:-6 }}</td>
+            <td>{{ transaction.order.trader! | slice:-6 }}</td>
             <td>
               {{ transaction.order.value | bignumber:18 }} NAS
               {{ transaction.order.type === OrderType.NasToToken ? '->' : '<-' }}
