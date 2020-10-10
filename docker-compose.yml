@@ -4,4 +4,4 @@ services:
     image: website
     restart: always
     ports:
-      - 80:80
+      - 80:8043
