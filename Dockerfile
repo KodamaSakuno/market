@@ -6,5 +6,5 @@ COPY . ./
 RUN npm run build -- --prod
 
 FROM pierrezemb/gostatic
-COPY --from=build /sln/dist /srv/http
+COPY --from=build /sln/dist/market /srv/http
 CMD ["-fallback=/index.html"]
