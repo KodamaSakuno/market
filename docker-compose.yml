@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+  website:
+    image: website
+    restart: always
+    ports:
+      - 80:80
