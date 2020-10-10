@@ -30,7 +30,7 @@ export class ContractService {
 
   constructor(private walletService: WalletService) {
     this._neb = new Neb();
-    this._neb.setRequest(new HttpRequest('https://testnet.nebulas.io'));
+    this._neb.setRequest(new HttpRequest(environment.url));
 
     this._nebPay = new NebPay();
 
@@ -115,7 +115,7 @@ export class ContractService {
             gasPrice: '20000000000',
           },
         },
-        callback: 'https://pay.nebulas.io/api/pay',
+        callback: 'https://pay.nebulas.io/api/mainnet/pay',
       }),
       promise,
     };
