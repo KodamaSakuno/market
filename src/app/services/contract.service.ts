@@ -48,8 +48,8 @@ export class ContractService {
       from: this.walletService.address!,
       to: contractAddress,
       value: '0',
-      gasLimit: 200000,
-      gasPrice: 20000000000,
+      gasLimit: '200000',
+      gasPrice: '20000000000',
       nonce: parseInt(nonce) + 1,
       contract: {
         function: method,
