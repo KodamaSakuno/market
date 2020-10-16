@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import BigNumber from 'bignumber.js';
 import { defer } from 'rxjs';
@@ -28,7 +29,7 @@ export class ContractService {
 
   private _timeoutIds: Map<symbol, number>;
 
-  constructor(private walletService: WalletService) {
+  constructor(private walletService: WalletService, private httpClient: HttpClient) {
     this._neb = new Neb();
     this._neb.setRequest(new HttpRequest(environment.url));
 
@@ -41,8 +42,9 @@ export class ContractService {
     return defer(() => this.callPromise(contractAddress, method, args));
   }
   async callPromise(contractAddress: string, method: string, args: any[] = []) {
-    const { nonce } = await this._neb.api.getAccountState(this.walletService.address!);
-    const { result, execute_err, estimate_gas } = await this._neb.api.call({
+    const { nonce } = await this.httpClient.post('/api/nebulas/account_state', { address: this.walletService.address }).toPromise<any>();
+
+    const { result, execute_err, estimate_gas } = await this.httpClient.post('/api/nebulas/call', {
       from: this.walletService.address!,
       to: contractAddress,
       value: '0',
@@ -53,7 +55,7 @@ export class ContractService {
         function: method,
         args: JSON.stringify(args),
       },
-    });
+    }).toPromise<any>();
 
     if (execute_err !== '') {
       throw new Error(execute_err);
