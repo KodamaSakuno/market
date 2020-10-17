@@ -3,8 +3,6 @@ import { Injectable } from '@angular/core';
 import BigNumber from 'bignumber.js';
 import { defer } from 'rxjs';
 
-import { environment } from 'src/environments/environment';
-
 import { WalletService } from './wallet.service';
 
 function randomCode(len: number) {
@@ -24,15 +22,11 @@ function randomCode(len: number) {
   providedIn: 'root'
 })
 export class ContractService {
-  private _neb: Neb;
   private _nebPay: NebPay;
 
   private _timeoutIds: Map<symbol, number>;
 
   constructor(private walletService: WalletService, private httpClient: HttpClient) {
-    this._neb = new Neb();
-    this._neb.setRequest(new HttpRequest(environment.url));
-
     this._nebPay = new NebPay();
 
     this._timeoutIds = new Map<symbol, number>();
