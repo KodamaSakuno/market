@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { QRCodeModule } from 'angularx-qrcode';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppIconsModule } from './app-icons.module';
@@ -32,7 +32,6 @@ import { OrderDetailPayCurrencyModalComponent } from './components/order-detail-
 import { OrderDetailPayTokenModalComponent } from './components/order-detail-pay-token-modal/order-detail-pay-token-modal.component';
 import { RemoveOrderModalComponent } from './components/remove-order-modal/remove-order-modal.component';
 import { TxsComponent } from './pages/txs/txs.component';
-import { RequestInterceptor } from './request.interceptor';
 
 @NgModule({
   declarations: [
@@ -71,11 +70,6 @@ import { RequestInterceptor } from './request.interceptor';
     AppIconsModule,
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: RequestInterceptor,
-      multi: true,
-    },
   ],
   bootstrap: [AppComponent]
 })

@@ -73,10 +73,6 @@
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
                 },
-                {
-                  "replace": "src/app/request.interceptor.ts",
-                  "with": "src/app/request.interceptor.prod.ts"
-                }
               ],
               "optimization": true,
               "outputHashing": "all",
@@ -104,7 +100,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "market:build"
+            "browserTarget": "market:build",
+            "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
             "production": {
