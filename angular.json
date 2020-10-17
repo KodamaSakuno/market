@@ -72,6 +72,10 @@
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
+                },
+                {
+                  "replace": "src/app/request.interceptor.ts",
+                  "with": "src/app/request.interceptor.prod.ts"
                 }
               ],
               "optimization": true,
