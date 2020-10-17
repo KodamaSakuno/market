@@ -1,7 +1,19 @@
 version: "3.8"
 services:
-  website:
-    image: website
+  frontend:
+    image: frontend
     restart: always
+  backend:
+    image: backend
+    restart: always
+  website:
+    image: nginx:alpine
+    restart: always
+    links:
+      - frontend
+      - backend
     ports:
-      - 80:8043
+      - 80:80
+    volumes:
+      - ./nginx/confs:/etc/nginx/conf.d
+      - ./nginx/logs:/var/log/nginx
