@@ -19,7 +19,6 @@ import { IntegerPipe } from './integer.pipe';
 import { AddInquiryModalComponent } from './components/add-inquiry-modal/add-inquiry-modal.component';
 import { QrcodeComponent } from './components/qrcode/qrcode.component';
 import { RemoveAllInquiriesModalComponent } from './components/remove-all-inquiries-modal/remove-all-inquiries-modal.component';
-import { TestTokenComponent } from './components/test-token/test-token.component';
 import { OrderListComponent } from './components/order-list/order-list.component';
 import { OrderItemComponent } from './components/order-item/order-item.component';
 import { AddOrderModalComponent } from './components/add-order-modal/add-order-modal.component';
@@ -47,7 +46,6 @@ import { TxsComponent } from './pages/txs/txs.component';
     AddInquiryModalComponent,
     QrcodeComponent,
     RemoveAllInquiriesModalComponent,
-    TestTokenComponent,
     OrderListComponent,
     OrderItemComponent,
     AddOrderModalComponent,
