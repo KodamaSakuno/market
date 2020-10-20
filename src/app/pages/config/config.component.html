@@ -17,11 +17,11 @@
     <div class="form-row" *ngIf="symbol">
       <div class="form-group">
         <label>最小 {{ symbol }}</label>
-        <app-amount-input [(amount)]="config!.minAmount" [decimals]="decimals"></app-amount-input>
+        <app-amount-input [(amount)]="config!.minAmount" [decimals]="18"></app-amount-input>
       </div>
       <div class="form-group">
         <label>最大 {{ symbol }}</label>
-        <app-amount-input [(amount)]="config!.maxAmount" [decimals]="decimals"></app-amount-input>
+        <app-amount-input [(amount)]="config!.maxAmount" [decimals]="18"></app-amount-input>
       </div>
     </div>
     <div class="form-row">
