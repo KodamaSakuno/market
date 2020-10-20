@@ -19,6 +19,9 @@ export class MainComponent implements OnInit {
   get marketContractExplorerUrl() {
     return environment.explorerPrefix + this.marketService.contractAddress;
   }
+  get managerExplorerUrl() {
+    return environment.explorerPrefix + environment.proxyAddress;
+  }
 
   constructor(private walletService: WalletService, private tokenService: TokenService, private marketService: MarketService) {
     this.walletService.isAvailable.subscribe(isAvailable => {

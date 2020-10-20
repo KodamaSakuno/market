@@ -8,6 +8,7 @@ export type Config = {
   ratioProtectRange: number,
   valueProtectRange: number,
   deposit: number,
+  depositFee: number,
   fee: number,
   fee50Receiver: string,
   fee10Receivers: Array<string>,
