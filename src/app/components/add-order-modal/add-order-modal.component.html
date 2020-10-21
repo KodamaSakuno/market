@@ -20,11 +20,20 @@
       </div>
     </div>
     <div class="form-row">
+      <div class="col-md-4 mb-3 flex-row d-inline-flex align-items-center">
+        <span>1:</span><input class="form-control d-inline" inputmode="numeric" [(ngModel)]="ratio" required />
+      </div>
+      <div class="col-md-4 mb-3 text-center">
+      </div>
+      <div class="col-md-4 mb-3 flex-row d-inline-flex align-items-center">
+        1:<input class="form-control" inputmode="numeric" [(ngModel)]="ratioReversed" required />
+      </div>
+    </div>
+    <div class="form-row">
       <div class="col-md-4 mb-3">
         <button class="btn btn-primary" [disabled]="valueInput.isInvalid || amountInput.isInvalid" (click)="payCurrency()">支付 NAS 挂单</button>
       </div>
       <div class="col-md-4 mb-3 text-center">
-        {{ ratio }}
       </div>
       <div class="col-md-4 mb-3">
         <button class="btn btn-primary" [disabled]="valueInput.isInvalid || amountInput.isInvalid" (click)="payToken()">支付 {{ tokenService.symbol }} 挂单</button>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import BigNumber from 'bignumber.js';
 
 import { MarketService } from '../../services/market.service';
 import { environment } from '../../../environments/environment';
@@ -28,8 +29,13 @@ export class AddInquiryModalComponent implements OnInit {
 
   token: string | null = null;
 
+  minValue = new BigNumber(0);
+  minAmount = new BigNumber(0);
+
   constructor(public activeModal: NgbActiveModal, public marketService: MarketService, public tokenService: TokenService) { }
 
   ngOnInit(): void {
+    this.minValue = new BigNumber(this.marketService.config.minValue);
+    this.minAmount = new BigNumber(this.marketService.config.minAmount);
   }
 }

@@ -6,6 +6,8 @@
 </div>
 <div class="modal-body">
   <p>请选择要公示的资产</p>
+  <p>最小 NAS 要求： {{ minValue | bignumber:18 }} NAS</p>
+  <p>最小 NAX 要求： {{ minAmount | bignumber:18 }} NAX</p>
   <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="selected">
     <label ngbButtonLabel class="btn-primary">
       <input ngbButton type="radio" value="nas"> NAS
