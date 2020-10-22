@@ -35,7 +35,7 @@ export class AddInquiryModalComponent implements OnInit {
   constructor(public activeModal: NgbActiveModal, public marketService: MarketService, public tokenService: TokenService) { }
 
   ngOnInit(): void {
-    this.minValue = new BigNumber(this.marketService.config.minValue);
-    this.minAmount = new BigNumber(this.marketService.config.minAmount);
+    this.minValue = new BigNumber(this.marketService.config.minInquiryValue);
+    this.minAmount = new BigNumber(this.marketService.config.minInquiryAmount);
   }
 }
