@@ -25,6 +25,12 @@ export class ConfigComponent implements OnInit {
 
   args: Array<any> | null = null;
 
+  managers: Array<string> = [];
+
+  managerToAdd = '';
+  managerFunc = '';
+  managerArgs: Array<any> | null = null;
+
   constructor(private walletService: WalletService, private contractService: ContractService, private marketService: MarketService, private tokenService: TokenService) {
     this.walletService.isAvailable.subscribe(isAvailable => {
       this.isAvailable = isAvailable;
@@ -41,6 +47,7 @@ export class ConfigComponent implements OnInit {
       this.contractService.call(this.tokenService.contractAddress, 'decimals').subscribe(({ result }) => {
         this.decimals = result;
       });
+      this.updateManager();
     });
     this.walletService.checkBinded();
   }
@@ -50,6 +57,21 @@ export class ConfigComponent implements OnInit {
 
   update() {
     this.args = [this.marketService.contractAddress, this.config];
+  }
+
+  updateManager() {
+    this.contractService.call(this.proxyContractAddress, 'getManagers').subscribe(({ result }) => {
+      this.managers = result;
+    });
+  }
+
+  removeManager(index: number) {
+    this.managerFunc = 'removeManager';
+    this.managerArgs = [this.managers[index]];
+  }
+  addManager() {
+    this.managerFunc = 'addManager';
+    this.managerArgs = [this.managerToAdd];
   }
 
 }
