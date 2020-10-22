@@ -5,6 +5,8 @@ export type Config = {
   maxValue: string | BigNumber,
   minAmount: string | BigNumber,
   maxAmount: string | BigNumber,
+  minInquiryValue: string | BigNumber,
+  minInquiryAmount: string | BigNumber,
   ratioProtectRange: number,
   valueProtectRange: number,
   deposit: number,
