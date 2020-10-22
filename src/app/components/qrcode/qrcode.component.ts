@@ -15,8 +15,16 @@ export class QrcodeComponent implements OnInit {
   @Input()
   to?: string;
 
+  private _value: string | BigNumber = "0";
   @Input()
-  value: string | BigNumber = "0";
+  get value() {
+    return this._value;
+  }
+  set value(val: string | BigNumber) {
+    this._value = val;
+
+    this.refresh();
+  }
 
   @Input()
   func?: string;
