@@ -12,14 +12,15 @@ export class TokenService {
 
   contractAddress = environment.tokenAddress;
 
-  symbol = '???';
-  decimals = 18;
+  symbol = 'NAX';
+  decimals = 9;
 
   constructor(private contractService: ContractService) { }
 
-  async initialize() {
-    this.symbol = (await this.contractService.callPromise(environment.tokenAddress, 'symbol')).result;
-    this.decimals = (await this.contractService.callPromise(environment.tokenAddress, 'decimals')).result;
+  initialize() {
+    // this.symbol = (await this.contractService.callPromise(environment.tokenAddress, 'symbol')).result;
+    // this.decimals = (await this.contractService.callPromise(environment.tokenAddress, 'decimals')).result;
+    return Promise.resolve();
   }
 
   getAllowance(owner: string, spender: string) {

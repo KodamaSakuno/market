@@ -81,22 +81,27 @@ export class AddOrderModalComponent implements OnInit {
     }
 
     const [a, b] = [...this._pair].sort();
+    const { decimals } = this.tokenService;
+    const ten = new BigNumber(10);
+
+    const valueLiteral = this.value.div(ten.pow(18));
+    const amountLiteral = this.amount.div(ten.pow(decimals));
 
     if (a == 1 && b == 2) {
-      this._ratio = this.amount.div(this.value).toNumber();
-      this._ratioReversed = this.value.div(this.amount).toNumber();
+      this._ratio = amountLiteral.div(valueLiteral).toNumber();
+      this._ratioReversed = valueLiteral.div(amountLiteral).toNumber();
     } else if (a == 1 && b == 3) {
-      this._amount = this.value.times(this.ratio);
+      this._amount = valueLiteral.times(this.ratio).times(ten.pow(decimals));
       this._ratioReversed = 1 / this.ratio;
     } else if (a == 1 && b == 4) {
       this._ratio = 1 / this.ratioReversed;
-      this._amount = this.value.times(this.ratio);
+      this._amount = valueLiteral.times(this.ratio).times(ten.pow(decimals));
     } else if (a == 2 && b == 3) {
       this._ratioReversed = 1 / this.ratio;
-      this._value = this.amount.div(this.ratio);
+      this._value = amountLiteral.div(this.ratio).times(ten.pow(18));
     } else if (a == 2 && b == 4) {
       this._ratio = 1 / this.ratioReversed;
-      this._value = this.amount.div(this.ratio);
+      this._value = amountLiteral.div(this.ratio).times(ten.pow(18));
     }
   }
 
