@@ -20,7 +20,7 @@
     <app-qrcode [to]="tokenService.contractAddress" func="approve" [args]="[marketService.contractAddress, allowance, amount]" (success)="refreshAllowance()"></app-qrcode>
   </div>
   <div *ngIf="!allowance.isNaN() && !isInsuffientAllowance && !input.isInvalid">
-    现在配额足够可以支付
+    现在配额足够可以支付 {{ tokenService.symbol }}
     <app-qrcode [to]="marketService.contractAddress" func="payOrderWithToken" [args]="[order.id, amount]" (success)="activeModal.close()"></app-qrcode>
   </div>
 </div>
