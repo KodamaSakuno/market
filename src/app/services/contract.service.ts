@@ -72,6 +72,8 @@ export class ContractService {
         const res = JSON.parse(await this._nebPay.queryPayInfo(sn));
         console.info(res);
         if (res.code !== 0) {
+          if (typeof res.msg === 'string' && res.msg.endsWith('does not exist'))
+            this._timeoutIds.set(qrcodeInstance, setTimeout(() => checkPayInfo(sn), 5000));
           return;
         }
 
@@ -98,6 +100,10 @@ export class ContractService {
         des: 'confirmTransfer',
         pageParams: {
           serialNumber,
+          goods: {
+            name: "test",
+            desc: "test goods",
+          },
           pay: {
             currency: 'NAS',
             to,
@@ -107,8 +113,6 @@ export class ContractService {
               function: func,
               args: JSON.stringify(this._formatArgs(args)),
             },
-            gasLimit: '200000',
-            gasPrice: '20000000000',
           },
         },
         callback: 'https://pay.nebulas.io/api/mainnet/pay',
