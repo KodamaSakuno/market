@@ -64,7 +64,7 @@ export class ContractService {
   generateQRDataForCall(qrcodeInstance: symbol, to: string, value: string | BigNumber, func: string, args: any[] = []) {
     let timeoutId = this._timeoutIds.get(qrcodeInstance);
     if (timeoutId)
-      clearTimeout(timeoutId);
+      clearInterval(timeoutId);
 
     const serialNumber = randomCode(32);
     const promise = new Promise((resolve, reject) => {
@@ -73,7 +73,10 @@ export class ContractService {
         console.info(res);
         if (res.code !== 0) {
           if (typeof res.msg === 'string' && res.msg.endsWith('does not exist'))
-            this._timeoutIds.set(qrcodeInstance, setTimeout(() => checkPayInfo(sn), 5000));
+            return;
+
+          clearInterval(timeoutId);
+          this._timeoutIds.delete(qrcodeInstance);
           return;
         }
 
@@ -84,11 +87,14 @@ export class ContractService {
         else if (status === 1)
           resolve();
         else if (status === 2) {
-          this._timeoutIds.set(qrcodeInstance, setTimeout(() => checkPayInfo(sn), 5000));
+          return;
         }
+
+        clearInterval(timeoutId);
+        this._timeoutIds.delete(qrcodeInstance);
       };
 
-      checkPayInfo(serialNumber);
+      this._timeoutIds.set(qrcodeInstance, timeoutId = setInterval(() => checkPayInfo(serialNumber)), 5000);
     });
 
     if (typeof value === 'string')
@@ -114,8 +120,8 @@ export class ContractService {
               args: JSON.stringify(this._formatArgs(args)),
             },
           },
+          callback: 'https://pay.nebulas.io/api/mainnet/pay',
         },
-        callback: 'https://pay.nebulas.io/api/mainnet/pay',
       }),
       promise,
     };
