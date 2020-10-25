@@ -69,7 +69,7 @@ export class ContractService {
     const serialNumber = randomCode(32);
     const promise = new Promise((resolve, reject) => {
       const checkPayInfo = async (sn: string) => {
-        const res = JSON.parse(await this._nebPay.queryPayInfo(sn, { callback: NebPay.config.testnetUrl }));
+        const res = JSON.parse(await this._nebPay.queryPayInfo(sn, { callback: NebPay.config.mainnetUrl }));
         console.info(res);
         if (res.code !== 0) {
           return;
