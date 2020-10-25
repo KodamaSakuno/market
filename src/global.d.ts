@@ -55,6 +55,6 @@ declare global {
 
     call(to: string, value: string, func: string, args: string, options: any): string;
     nrc20pay(currency: string, to: string, value: string, options: any): string;
-    queryPayInfo(sn: string, options: any): Promise<any>;
+    queryPayInfo(sn: string, options?: any): Promise<any>;
   }
 }
