@@ -94,7 +94,7 @@ export class ContractService {
         this._timeoutIds.delete(qrcodeInstance);
       };
 
-      this._timeoutIds.set(qrcodeInstance, timeoutId = setInterval(() => checkPayInfo(serialNumber)), 5000);
+      this._timeoutIds.set(qrcodeInstance, timeoutId = setInterval(() => checkPayInfo(serialNumber), 5000));
     });
 
     if (typeof value === 'string')
