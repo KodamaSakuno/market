@@ -26,12 +26,13 @@ export class MainComponent implements OnInit {
   constructor(private walletService: WalletService, private tokenService: TokenService, private marketService: MarketService) {
     this.walletService.isAvailable.subscribe(isAvailable => {
       this.isAvailable = isAvailable;
+      if (isAvailable)
+        this.marketService.initialize();
     });
     this.walletService.checkBinded();
   }
 
   ngOnInit(): void {
     this.tokenService.initialize();
-    this.marketService.initialize();
   }
 }
