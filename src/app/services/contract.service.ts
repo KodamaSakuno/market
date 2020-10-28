@@ -90,6 +90,7 @@ export class ContractService {
         this._timeoutIds.delete(qrcodeInstance);
       };
 
+      // @ts-ignore
       this._timeoutIds.set(qrcodeInstance, timeoutId = setInterval(() => checkPayInfo(serialNumber), 5000));
     });
 

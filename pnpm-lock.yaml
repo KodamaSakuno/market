@@ -13,17 +13,22 @@ dependencies:
   angularx-qrcode: 10.0.10_@angular+core@10.1.0
   bignumber.js: 9.0.0
   bootstrap: 4.5.2
+  bs58: 4.0.1
+  jssha: 3.1.2
   ngx-device-detector: 2.0.0_09afe740ab51c87171d46fd36c85eca2
   rxjs: 6.6.3
+  safe-buffer: 5.2.1
   tslib: 2.0.1
   zone.js: 0.10.3
 devDependencies:
   '@angular-devkit/build-angular': 0.1001.0_3a35756d653dde84d3875ac957fc97a2
   '@angular/cli': 10.1.0
   '@angular/compiler-cli': 10.1.0_bf62daf728e46d6fbb74f4ce7c6ab5c0
+  '@types/bs58': 4.0.1
   '@types/jasmine': 3.5.14
   '@types/jasminewd2': 2.0.8
   '@types/node': 12.12.55
+  base-x: 3.0.8
   codelyzer: 6.0.0_tslint@6.1.3
   jasmine-core: 3.5.0
   jasmine-spec-reporter: 5.0.2
@@ -1451,6 +1456,12 @@ packages:
       yarn: '>= 1.13.0'
     resolution:
       integrity: sha512-LRGwo37akHe/BUl5FHj74mJ/xhM0Z7W8pWMWJ6zGihs+HNXjTgfYVgGA1TgN0amqQODa3AxxLL6aLj+hVYZi+g==
+  /@types/bs58/4.0.1:
+    dependencies:
+      base-x: 3.0.8
+    dev: true
+    resolution:
+      integrity: sha512-yfAgiWgVLjFCmRv8zAcOIHywYATEwiTVccTLnRp6UxTNavT55M9d/uhK3T03St/+8/z/wW+CRjGKUNmEqoHHCA==
   /@types/color-name/1.1.1:
     resolution:
       integrity: sha512-rr+OQyAjxze7GgWrSaJwydHStIhHq2lvY3BOC2Mj7KnzI7XK0Uw1TOOdI9lDoajEbSWLiYgoo4f1R51erQfhPQ==
@@ -2081,6 +2092,11 @@ packages:
   /balanced-match/1.0.0:
     resolution:
       integrity: sha1-ibTRmasr7kneFk6gK4nORi1xt2c=
+  /base-x/3.0.8:
+    dependencies:
+      safe-buffer: 5.2.1
+    resolution:
+      integrity: sha512-Rl/1AWP4J/zRrk54hhlxH4drNxPJXYUaKffODVI53/dAsV4t9fBxyxYKAVPU1XBHxYwOWP9h9H0hM2MVw4YfJA==
   /base/0.11.2:
     dependencies:
       cache-base: 1.0.1
@@ -2326,6 +2342,12 @@ packages:
     dev: true
     resolution:
       integrity: sha512-HJDJ0TSlmkwnt9RZ+v5gFpa1XZTBYTj0ywvLwJ3241J7vMw2jAsGNVhKHtmCOyg+VxeLZyaibO9UL71AsUeDIw==
+  /bs58/4.0.1:
+    dependencies:
+      base-x: 3.0.8
+    dev: false
+    resolution:
+      integrity: sha1-vhYedsNU9veIrkBx9j806MTwpCo=
   /buffer-from/1.1.1:
     dev: true
     resolution:
@@ -5347,6 +5369,10 @@ packages:
       '0': node >=0.6.0
     resolution:
       integrity: sha1-MT5mvB5cwG5Di8G3SZwuXFastqI=
+  /jssha/3.1.2:
+    dev: false
+    resolution:
+      integrity: sha512-6fEObA9he4vcCpz+dt9b5DjqhqvSsz9XMfNPU6/IyKHDQpCHsYayPRkWmAZG61lZC9XVJcjsQNAiUUd0NpskeQ==
   /jszip/3.5.0:
     dependencies:
       lie: 3.3.0
@@ -7723,7 +7749,6 @@ packages:
     resolution:
       integrity: sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==
   /safe-buffer/5.2.1:
-    dev: true
     resolution:
       integrity: sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==
   /safe-regex/1.1.0:
@@ -9532,16 +9557,20 @@ specifiers:
   '@angular/platform-browser-dynamic': ~10.1.0
   '@angular/router': ~10.1.0
   '@ng-bootstrap/ng-bootstrap': ^7.0.0
+  '@types/bs58': ^4.0.1
   '@types/jasmine': ~3.5.0
   '@types/jasminewd2': ~2.0.3
   '@types/node': ^12.11.1
   angular-feather: ^6.0.10
   angularx-qrcode: ^10.0.10
+  base-x: ^3.0.8
   bignumber.js: ^9.0.0
   bootstrap: ^4.5.0
+  bs58: ^4.0.1
   codelyzer: ^6.0.0
   jasmine-core: ~3.5.0
   jasmine-spec-reporter: ~5.0.0
+  jssha: ^3.1.2
   karma: ~5.0.0
   karma-chrome-launcher: ~3.1.0
   karma-coverage-istanbul-reporter: ~3.0.2
@@ -9550,6 +9579,7 @@ specifiers:
   ngx-device-detector: ^2.0.0
   protractor: ~7.0.0
   rxjs: ~6.6.3
+  safe-buffer: ^5.2.1
   ts-node: ~8.3.0
   tslib: ^2.0.0
   tslint: ~6.1.0
