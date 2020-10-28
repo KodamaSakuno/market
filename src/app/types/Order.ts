@@ -38,7 +38,7 @@ export class Order {
   symbol: string;
 
   get ratio() {
-    return this.amount.div(new BigNumber(10).pow(18)).div(this.value.div(new BigNumber(10).pow(this.decimals))).toFixed(0);
+    return this.amount.div(new BigNumber(10).pow(this.decimals)).div(this.value.div(new BigNumber(10).pow(18))).toFixed(0);
   }
 
   get currencyPaidState() {
