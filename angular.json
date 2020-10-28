@@ -61,7 +61,9 @@
             "scripts": [],
             "allowedCommonJsDependencies": [
               "bignumber.js",
-              "qrcode"
+              "qrcode",
+              "bs58",
+              "safe-buffer"
             ]
           },
           "configurations": {
