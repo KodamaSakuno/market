@@ -22,13 +22,9 @@ function randomCode(len: number) {
   providedIn: 'root'
 })
 export class ContractService {
-  private _nebPay: NebPay;
-
   private _timeoutIds: Map<symbol, number>;
 
   constructor(private walletService: WalletService, private httpClient: HttpClient) {
-    this._nebPay = new NebPay();
-
     this._timeoutIds = new Map<symbol, number>();
   }
 
@@ -68,8 +64,8 @@ export class ContractService {
 
     const serialNumber = randomCode(32);
     const promise = new Promise((resolve, reject) => {
-      const checkPayInfo = async (sn: string) => {
-        const res = JSON.parse(await this._nebPay.queryPayInfo(sn));
+      const checkPayInfo = async (serialNumber: string) => {
+        const res = await this.httpClient.post('/api/nebulas/pay_info', { serialNumber }).toPromise<any>();
         console.info(res);
         if (res.code !== 0) {
           if (typeof res.msg === 'string' && res.msg.endsWith('does not exist'))
@@ -125,38 +121,6 @@ export class ContractService {
       }),
       promise,
     };
-  }
-  callWithPay(to: string, method: string, value: string | BigNumber, args: any[]) {
-    return new Promise((resolve, reject) => {
-      const checkPayInfo = async (sn: string) => {
-        const res = JSON.parse(await this._nebPay.queryPayInfo(sn, { callback: NebPay.config.testnetUrl }));
-        console.info(res);
-        if (res.code !== 0) {
-          return;
-        }
-
-        const { status } = res.data;
-
-        if (status === 0)
-          reject(res.data.execute_error);
-        else if (status === 1)
-          resolve();
-        else if (status === 2)
-          setTimeout(() => checkPayInfo(sn), 5000);
-      };
-
-      if (typeof value === 'string')
-        value = new BigNumber(value);
-
-      value = value.div(new BigNumber(10).pow(18)).toString(10);
-
-      this._nebPay.call(to, value, method, JSON.stringify(this._formatArgs(args)), {
-        gasLimit: '200000',
-        gasPrice: '20000000000',
-        callback: NebPay.config.testnetUrl,
-        listener: (sn: string) => checkPayInfo(sn),
-      });
-    });
   }
 
   private _formatArgs(args: any[]) {

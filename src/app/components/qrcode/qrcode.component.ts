@@ -69,13 +69,6 @@ export class QrcodeComponent implements OnInit {
     this._handlePromise(promise);
   }
 
-  useExtension() {
-    if (!this.to || !this.func || !this.args)
-      throw new Error("Parameter(s) missed");
-
-    this._handlePromise(this.contractService.callWithPay(this.to, this.func, this.value, this.args));
-  }
-
   private _handlePromise(promise: Promise<unknown>) {
     promise.then(() => {
       this.success.emit();

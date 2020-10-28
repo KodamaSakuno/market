@@ -54,8 +54,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/nebulas.js",
-              "src/nebPay.js"
+              "src/nebulas.js"
             ],
             "styles": [
               "src/styles.styl"
@@ -72,7 +71,7 @@
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
-                },
+                }
               ],
               "optimization": true,
               "outputHashing": "all",
