@@ -15,6 +15,6 @@ export class MarketService {
   constructor(private contractService: ContractService) { }
 
   async initialize() {
-    this.config = (await this.contractService.callPromise(this.contractAddress, 'getConfig')).result;
+    this.config = (await this.contractService.callPromise(environment.proxyAddress, 'getConfig')).result;
   }
 }

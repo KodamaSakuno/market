@@ -38,7 +38,7 @@ export class ConfigComponent implements OnInit {
       if (!isAvailable)
         return;
 
-      this.contractService.call(this.marketService.contractAddress, 'getConfig').subscribe(({ result }) => {
+      this.contractService.call(this.proxyContractAddress, 'getConfig').subscribe(({ result }) => {
         this.config = result;
       });
       this.contractService.call(this.tokenService.contractAddress, 'symbol').subscribe(({ result }) => {
@@ -56,7 +56,7 @@ export class ConfigComponent implements OnInit {
   }
 
   update() {
-    this.args = [this.marketService.contractAddress, this.config];
+    this.args = [this.config];
   }
 
   updateManager() {
