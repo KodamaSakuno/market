@@ -8,10 +8,10 @@ dependencies:
   '@angular/platform-browser': 11.0.0_a78744c44c11e63c040b2a4f3719025e
   '@angular/platform-browser-dynamic': 11.0.0_dae8268a46b8c59d0802edd3817ec4ef
   '@angular/router': 11.0.0_3d057ad4c131b6740cb10a342c39f451
-  '@ng-bootstrap/ng-bootstrap': 7.0.0_5b232ccb1759f19d597f6aa0fa7df453
+  '@ng-bootstrap/ng-bootstrap': 8.0.0_5b232ccb1759f19d597f6aa0fa7df453
   angular-feather: 6.0.10_tslib@2.0.1
-  angularx-qrcode: 10.0.10_@angular+core@11.0.0
-  bignumber.js: 9.0.0
+  angularx-qrcode: 10.0.11_@angular+core@11.0.0
+  bignumber.js: 9.0.1
   bootstrap: 4.5.2
   bs58: 4.0.1
   jssha: 3.1.2
@@ -1465,7 +1465,7 @@ packages:
     dev: true
     resolution:
       integrity: sha512-EUCPEkaRPvmHjWAAZkWMT7JDzpw7FKB00WTISaiXsbNOd5hCHg77XLA8sLYLFDo1zepYLo2w7GstN8YBqRXZfA==
-  /@ng-bootstrap/ng-bootstrap/7.0.0_5b232ccb1759f19d597f6aa0fa7df453:
+  /@ng-bootstrap/ng-bootstrap/8.0.0_5b232ccb1759f19d597f6aa0fa7df453:
     dependencies:
       '@angular/common': 11.0.0_@angular+core@11.0.0+rxjs@6.6.3
       '@angular/core': 11.0.0_rxjs@6.6.3+zone.js@0.10.3
@@ -1481,7 +1481,7 @@ packages:
       '@angular/localize': ^10.0.0
       rxjs: ^6.5.5
     resolution:
-      integrity: sha512-SxUaptGWJmCxM0d2Zy1mx7K7p/YBwGZ69NmmBQVY4BE6p5av0hWrVmv9rzzfBz0rhxU7RPZLor2Jpaoq8Xyl4w==
+      integrity: sha512-v77Gfd8xHH+exq0WqIqVRlxbUEHdA/2+RUJenUP2IDTQN9E1rWl7O461/kosr+0XPuxPArHQJxhh/WsCYckcNg==
   /@ngtools/webpack/11.0.1_cae1f6626305ef138017e476fc2982d8:
     dependencies:
       '@angular-devkit/core': 11.0.1
@@ -1901,7 +1901,7 @@ packages:
       tslib: ^1.10.0
     resolution:
       integrity: sha512-wROjIl39pt0VApzxElZ7zs53OLksSleIA1jKntQs5pWZ1mfHklEGkcOQxsiEHVshQZa/c1HjMMtk+7G8YtJSFA==
-  /angularx-qrcode/10.0.10_@angular+core@11.0.0:
+  /angularx-qrcode/10.0.11_@angular+core@11.0.0:
     dependencies:
       '@angular/core': 11.0.0_rxjs@6.6.3+zone.js@0.10.3
       qrcode: 1.4.2
@@ -1910,7 +1910,7 @@ packages:
     peerDependencies:
       '@angular/core': ^10.0.2
     resolution:
-      integrity: sha512-e6cgh5QL6hma4FfEy4WMlmdIIg21d69UsyVGOQ0nValy0jeWWu2WhNmlXZbDM2AcVOecOW4ODJDTKUlpQpS43w==
+      integrity: sha512-sbtqdqAboEFNoyxgG4FQYPZDzwX9TlICT2mLpsC/Se3OuT+HntW56q8E/i1BL1fJhx7zt0JJR7bc7LfofUeAlQ==
   /ansi-colors/3.2.4:
     dev: true
     engines:
@@ -2259,10 +2259,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-vyL2OymJxmarO8gxMr0mhChsO9QGwhynfuu4+MHTAW6czfq9humCB7rKpUjDd9YUiDPU4mzpyupFSvOClAwbmQ==
-  /bignumber.js/9.0.0:
+  /bignumber.js/9.0.1:
     dev: false
     resolution:
-      integrity: sha512-t/OYhhJ2SD+YGBQcjY8GzzDHEk9f3nerxjtfa6tlMXfe7frs/WozhvCNoGvpM0P3bNf3Gq5ZRMlGr5f3r4/N8A==
+      integrity: sha512-IdZR9mh6ahOBv/hYGiXyVuyCetmGJhtYkqLBpTStdhEGjegpPlUawydyaF3pbIOFynJTpllEs+NP+CS9jKFLjA==
   /binary-extensions/1.13.1:
     dev: true
     engines:
@@ -9708,15 +9708,15 @@ specifiers:
   '@angular/platform-browser': ~11.0.0
   '@angular/platform-browser-dynamic': ~11.0.0
   '@angular/router': ~11.0.0
-  '@ng-bootstrap/ng-bootstrap': ^7.0.0
+  '@ng-bootstrap/ng-bootstrap': ^8.0.0
   '@types/bs58': ^4.0.1
   '@types/jasmine': ~3.6.0
   '@types/jasminewd2': ~2.0.3
   '@types/node': ^12.11.1
   angular-feather: ^6.0.10
-  angularx-qrcode: ^10.0.10
+  angularx-qrcode: ^10.0.11
   base-x: ^3.0.8
-  bignumber.js: ^9.0.0
+  bignumber.js: ^9.0.1
   bootstrap: ^4.5.0
   bs58: ^4.0.1
   codelyzer: ^6.0.0
