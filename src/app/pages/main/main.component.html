@@ -11,7 +11,10 @@
     </div>
   </div>
   <div class="p-3 text-center">
-    <a [href]="marketContractExplorerUrl">交易合约</a>
+    <a href="javascript:void;" (click)="showManual()">使用说明</a>
+    <a class="ml-3" href="javascript:void;" (click)="showEnglishManual()">Manual</a>
+    <span> - </span>
+    <a [href]="marketContractExplorerUrl">询盘合约</a>
     <a class="ml-3" [href]="managerExplorerUrl">管理合约</a>
   </div>
 </div>

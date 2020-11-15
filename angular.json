@@ -58,7 +58,9 @@
             "styles": [
               "src/styles.styl"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/marked/lib/marked.js"
+            ],
             "allowedCommonJsDependencies": [
               "bignumber.js",
               "qrcode",

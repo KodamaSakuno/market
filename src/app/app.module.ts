@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { QRCodeModule } from 'angularx-qrcode';
 import { HttpClientModule } from '@angular/common/http';
+import { MarkdownModule } from 'ngx-markdown';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppIconsModule } from './app-icons.module';
@@ -32,6 +33,8 @@ import { OrderDetailPayCurrencyModalComponent } from './components/order-detail-
 import { OrderDetailPayTokenModalComponent } from './components/order-detail-pay-token-modal/order-detail-pay-token-modal.component';
 import { RemoveOrderModalComponent } from './components/remove-order-modal/remove-order-modal.component';
 import { TxsComponent } from './pages/txs/txs.component';
+import { ManualComponent } from './components/manual/manual.component';
+import { ManualEnComponent } from './components/manual-en/manual-en.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +62,8 @@ import { TxsComponent } from './pages/txs/txs.component';
     OrderDetailPayTokenModalComponent,
     RemoveOrderModalComponent,
     TxsComponent,
+    ManualComponent,
+    ManualEnComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,6 +73,7 @@ import { TxsComponent } from './pages/txs/txs.component';
     HttpClientModule,
     AppRoutingModule,
     AppIconsModule,
+    MarkdownModule.forRoot(),
   ],
   providers: [
   ],

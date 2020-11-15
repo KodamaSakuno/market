@@ -1,0 +1,17 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Inquiry contract - to find the transaction price</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <markdown>
+1. The remaining assets of the inquiry pool on the left for public address selection do not include actual transactions, and the addresses that are not required by the parameters are regularly cleaned up, and the general service charge on the chain is only required to be paid
+2. The offer pool is the actual transaction part. You can input either side of the asset to pay the full amount or the margin part, and enter the proportion, one side of the asset or both sides of the asset to display the rest of the calculated value, and scan the code to pay after the display in the coupon pool
+3. In the case of bill, the full payment transaction occurs on both sides and is distributed to the payment address.
+4. If both sides of the transaction meet the requirements of the margin, the paid order can not be cancelled, and the partially paid list will be closed by regular polling (about weekly), and the part meeting the margin will be executed, and the transaction part will be distributed in equal proportion, and the part not involved in the transaction will be returned.
+5. All the values of the generated hang up orders are constrained by the hanging order pool parameters, and the prices and magnitudes that are too close to each other have corresponding protection mechanisms to prevent them from being placed on the orders (before the generation of the bills, the proportion of each order will be compared, which is greater than or less than the parameter a, and then the number of tokens on the left side and the number on the right side of each order must be greater than or less than parameter B, which can meet the conditions to generate a hanging order) Face to face [jy.mrh2.cc/config](http://jy.mrh2.cc/config).
+6. When a transaction occurs, the address paying the margin will receive the margin handling fee parameter of the target Token of the non guaranteed part of the transaction as the reward (about 2%), which is regarded as the reward for discovering the transaction value. At the same time, the contract charges a small amount and distributes it to the income address.
+7. At present, it is still in the testing stage, and the use and transaction risks are at your own risk. Thank you.
+  </markdown>
+</div>
