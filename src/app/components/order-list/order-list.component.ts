@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { OrderService } from '../../services/order.service';
+import { MarketService } from 'src/app/services/market.service';
 import { Order } from '../../types/Order';
 import { AddOrderModalComponent } from '../add-order-modal/add-order-modal.component';
 import { RemoveOrderModalComponent } from '../remove-order-modal/remove-order-modal.component';
@@ -20,7 +21,7 @@ export class OrderListComponent implements OnInit {
 
   orders: Array<Order> = [];
 
-  constructor(private orderService: OrderService, private modalService: NgbModal) {
+  constructor(private orderService: OrderService, private modalService: NgbModal, public marketService: MarketService) {
     this.orderService.orders$.subscribe(orders => {
       this.orders = orders;
     });

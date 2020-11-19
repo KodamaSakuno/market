@@ -1,5 +1,5 @@
 <div class="d-flex">
-  <button class="btn btn-light" (click)="addOrder()"><i-feather class="small-icon" name="plus"></i-feather></button>
+  <button class="btn btn-light" [disabled]="!!!marketService.config" (click)="addOrder()"><i-feather class="small-icon" name="plus"></i-feather></button>
   <button class="btn btn-light" (click)="removeOrder()"><i-feather class="small-icon" name="minus"></i-feather></button>
   <button class="btn btn-light ml-auto" [class.active]="isDetail" (click)="toggleDetail()">详细查找</button>
 </div>
