@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  marketAddress: 'n1iF7GYh9HeFCzEGUrUqf5dXi8EV3PPAmN2',
-  tokenAddress: 'n1mMUcxeDY6TWzyiTLFFUAQAb4bXUrYtvFb',
-  proxyAddress: 'n21V7sQqVXHezE3q5cTB9jb61AhWiAUc9zM',
-  explorerPrefix: 'https://explorer.nebulas.io/#/testnet/address/',
+  marketAddress: 'n217HyJ8zmPYwRC4ro24Gc55QbxzJijuPFj',
+  tokenAddress: 'n1etmdwczuAUCnMMvpGasfi8kwUbb2ddvRJ',
+  proxyAddress: 'n1eKHUdvxVaPaJsbthdP2pCU64ZajEGcrNX',
+  explorerPrefix: 'https://explorer.nebulas.io/#/address/',
 };
 
 /*
