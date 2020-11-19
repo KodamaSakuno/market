@@ -29,15 +29,18 @@
         1:<input class="form-control" inputmode="numeric" [(ngModel)]="ratioReversed" required />
       </div>
     </div>
-    <div class="form-row">
+    <div class="form-row" *ngIf="!protected else warning">
       <div class="col-md-4 mb-3">
-        <button class="btn btn-primary" [disabled]="valueInput.isInvalid || amountInput.isInvalid" (click)="payCurrency()">支付 NAS 挂单</button>
+        <button class="btn btn-primary" [disabled]="valueInput.isInvalid || amountInput.isInvalid || protected" (click)="payCurrency()">支付 NAS 挂单</button>
       </div>
       <div class="col-md-4 mb-3 text-center">
       </div>
       <div class="col-md-4 mb-3">
-        <button class="btn btn-primary" [disabled]="valueInput.isInvalid || amountInput.isInvalid" (click)="payToken()">支付 {{ tokenService.symbol }} 挂单</button>
+        <button class="btn btn-primary" [disabled]="valueInput.isInvalid || amountInput.isInvalid || protected" (click)="payToken()">支付 {{ tokenService.symbol }} 挂单</button>
       </div>
     </div>
+    <ng-template #warning>
+      <span>该挂单的比率或 NAS 处于某订单对应数值的范围内，无法挂单</span>
+    </ng-template>
   </div>
 </div>

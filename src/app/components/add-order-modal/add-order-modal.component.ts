@@ -8,6 +8,7 @@ import { TokenService } from '../../services/token.service';
 import { MarketService } from '../../services/market.service';
 import { AddOrderPayCurrencyModalComponent } from '../add-order-pay-currency-modal/add-order-pay-currency-modal.component';
 import { AddOrderPayTokenModalComponent } from '../add-order-pay-token-modal/add-order-pay-token-modal.component';
+import { Order } from 'src/app/types/Order';
 
 @Component({
   selector: 'app-add-order-modal',
@@ -53,6 +54,35 @@ export class AddOrderModalComponent implements OnInit {
   }
 
   _pair = new Array<1 | 2 | 3 | 4>();
+
+  orders: Array<Order> = [];
+
+  get protected() {
+    let { ratioProtectRange, valueProtectRange } = this.marketService.config;
+    const { decimals } = this.tokenService;
+    const ten = new BigNumber(10);
+
+    const valueLiteral = this.value.div(ten.pow(18));
+    const amountLiteral = this.amount.div(ten.pow(decimals));
+    const targetRatio = amountLiteral.div(valueLiteral);
+
+    for (const order of this.orders) {
+      const ratio = order.amount.div(ten.pow(decimals)).div(order.value.div(ten.pow(18)));
+      const ratioDelta = ratio.div(100).times(ratioProtectRange);
+
+      console.warn(targetRatio.toNumber())
+
+      if (targetRatio.gte(ratio.minus(ratioDelta)) && targetRatio.lte(ratio.plus(ratioDelta)))
+        return true;
+
+      const valueDelta = order.value.div(100).times(valueProtectRange);
+
+      if (this.value.gte(order.value.minus(valueDelta)) && this.value.lte(order.value.plus(valueDelta)))
+        return true;
+    }
+
+    return false;
+  }
 
   constructor(private modalService: NgbModal, public activeModal: NgbActiveModal, public tokenService: TokenService, private marketService: MarketService) {
   }

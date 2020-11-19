@@ -31,7 +31,10 @@ export class OrderListComponent implements OnInit {
   }
 
   async addOrder() {
-    await this.modalService.open(AddOrderModalComponent).result;
+    const modal = this.modalService.open(AddOrderModalComponent);
+    modal.componentInstance.orders = this.orders;
+
+    await modal.result;
 
     this.orderService.getOrders();
   }
