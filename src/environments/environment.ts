@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  marketAddress: 'n217HyJ8zmPYwRC4ro24Gc55QbxzJijuPFj',
+  marketAddress: 'n1vxS2q3JA9LdVUTUhTptmDtb5d1h7C96oj',
   tokenAddress: 'n1etmdwczuAUCnMMvpGasfi8kwUbb2ddvRJ',
   proxyAddress: 'n1eKHUdvxVaPaJsbthdP2pCU64ZajEGcrNX',
   explorerPrefix: 'https://explorer.nebulas.io/#/address/',
